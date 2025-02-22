@@ -11,11 +11,13 @@ function App() {
     <Container>
       <Header />
       <MainContent>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/build-guide" element={<BuildGuide />} />
-        </Routes>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/buildguide" element={<BuildGuide />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Router>
       </MainContent>
       <Footer />
     </Container>

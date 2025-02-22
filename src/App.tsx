@@ -11,7 +11,7 @@ function App() {
     <Container>
       <Header />
       <MainContent>
-        <HashRouter basename={import.meta.env.BASE_URL}>
+        <HashRouter basename="/omni_kbd_hp/">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/buildguide" element={<BuildGuide />} />

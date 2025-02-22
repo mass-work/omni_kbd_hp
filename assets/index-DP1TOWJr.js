@@ -396,7 +396,7 @@ Please change the parent <Route path="${M}"> to <Route path="${M==="/"?"*":`${M}
     height: auto;
     border-radius: 0.375rem;
   }
-`;function xy(){return u.jsxs(wy,{children:[u.jsx(Ng,{}),u.jsx(Sy,{children:u.jsx(x0,{children:u.jsxs(Ym,{children:[u.jsx(Fi,{path:"/",element:u.jsx(Mg,{})}),u.jsx(Fi,{path:"/buildguide",element:u.jsx(ey,{})}),u.jsx(Fi,{path:"/about",element:u.jsx(Xg,{})})]})})}),u.jsx(Ig,{})]})}const wy=ee.div`
+`;function xy(){return u.jsxs(wy,{children:[u.jsx(Ng,{}),u.jsx(Sy,{children:u.jsx(x0,{basename:"/omni_kbd_hp/",children:u.jsxs(Ym,{children:[u.jsx(Fi,{path:"/",element:u.jsx(Mg,{})}),u.jsx(Fi,{path:"/buildguide",element:u.jsx(ey,{})}),u.jsx(Fi,{path:"/about",element:u.jsx(Xg,{})})]})})}),u.jsx(Ig,{})]})}const wy=ee.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;

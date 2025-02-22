@@ -5,6 +5,17 @@
     <meta charset="UTF-8" />
     <title>omni kbd</title>
     <meta name="description" content="Omni KBD の公式HP" />
+    <script>
+      (function() {
+        // クエリパラメータから元のパスを取得
+        var params = new URLSearchParams(window.location.search);
+        var redirect = params.get('redirect');
+        if (redirect) {
+          // 元のパスに戻る
+          window.history.replaceState(null, '', redirect);
+        }
+      })();
+    </script>
     <script type="module" crossorigin src="/omni_kbd_hp/assets/index-DuVvohOO.js"></script>
   </head>
   <body>

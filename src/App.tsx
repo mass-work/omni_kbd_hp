@@ -12,9 +12,11 @@ function App() {
       <Header />
       <MainContent>
         <HashRouter basename="/omni_kbd_hp/">
-          <Route path="/" element={<Home />} />
-          <Route path="/buildguide" element={<BuildGuide />} />
-          <Route path="/about" element={<About />} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/buildguide" element={<BuildGuide />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
         </HashRouter>
       </MainContent>
       <Footer />

@@ -210,7 +210,7 @@ const BuildGuide: React.FC = () => {
       {/* ヘッダー */}
       <HeaderWrapper>
         <HeaderContainer>
-          <HeaderImage src="img/readme_top.jpg" alt="Readme Top" />
+          <HeaderImage src="/omni_kbd_hp/img/readme_top.jpg" alt="Readme Top" />
           <TextContainer>omni CS build guide</TextContainer>
         </HeaderContainer>
       </HeaderWrapper>
@@ -521,12 +521,12 @@ const BuildGuide: React.FC = () => {
 
             <HorizontalScrollContainer>
               <img
-                src="img/build_02_01.jpg"
+                src="/omni_kbd_hp/img/build_02_01.jpg"
                 alt="Build 02 01"
                 style={{ width: '600px' }}
               />
               <img
-                src="img/build_02_02.jpg"
+                src="/omni_kbd_hp/img/build_02_02.jpg"
                 alt="Build 02 02"
                 style={{ width: '600px' }}
               />
@@ -550,12 +550,12 @@ const BuildGuide: React.FC = () => {
                   トラックボールケースのくぼみ3か所に少量塗布します。
                   <FlexWrap>
                     <img
-                      src="img/build_03_01.jpg"
+                      src="/omni_kbd_hp/img/build_03_01.jpg"
                       alt="Build 03 01"
                       style={{ width: '300px' }}
                     />
                     <img
-                      src="img/build_03_02.jpg"
+                      src="/omni_kbd_hp/img/build_03_02.jpg"
                       alt="Build 03 02"
                       style={{ width: '169px' }}
                     />
@@ -566,12 +566,12 @@ const BuildGuide: React.FC = () => {
                   軽く指の腹で押え、支持球の浮きがないようにします。
                   <FlexWrap>
                     <img
-                      src="img/build_03_03.jpg"
+                      src="/omni_kbd_hp/img/build_03_03.jpg"
                       alt="Build 03 03"
                       style={{ width: '300px' }}
                     />
                     <img
-                      src="img/build_03_04.jpg"
+                      src="/omni_kbd_hp/img/build_03_04.jpg"
                       alt="Build 03 04"
                       style={{ width: '300px' }}
                     />
@@ -592,24 +592,24 @@ const BuildGuide: React.FC = () => {
                   ベアリングユニットをケースに乗せ、軸を押し込みます。
                   <HorizontalScrollContainer>
                     <img
-                      src="img/build_04_01.jpg"
+                      src="/omni_kbd_hp/img/build_04_01.jpg"
                       alt="Build 04 01"
                       style={{ width: '300px' }}
                     />
                     <img
-                      src="img/build_04_02.jpg"
+                      src="/omni_kbd_hp/img/build_04_02.jpg"
                       alt="Build 04 02"
                       style={{ width: '300px' }}
                     />
                   </HorizontalScrollContainer>
                   <HorizontalScrollContainer>
                     <img
-                      src="img/build_04_03.jpg"
+                      src="/omni_kbd_hp/img/build_04_03.jpg"
                       alt="Build 04 03"
                       style={{ width: '300px' }}
                     />
                     <img
-                      src="img/build_04_04.jpg"
+                      src="/omni_kbd_hp/img/build_04_04.jpg"
                       alt="Build 04 04"
                       style={{ width: '300px' }}
                     />
@@ -649,7 +649,7 @@ const BuildGuide: React.FC = () => {
                   全てのダイオードとソケット取り付け部の片側に予備はんだをします。
                   <FlexCenter>
                     <img
-                      src="img/build_05_02.jpg"
+                      src="/omni_kbd_hp/img/build_05_02.jpg"
                       alt="Build 05 02"
                       style={{ width: '300px' }}
                     />
@@ -659,7 +659,7 @@ const BuildGuide: React.FC = () => {
                   ダイオードとシルクが図の向きになるように置き、ピンセットでダイオードを押えながら予備はんだしたところにはんだ付けします。
                   <FlexCenter>
                     <img
-                      src="img/build_05_01.jpg"
+                      src="/omni_kbd_hp/img/build_05_01.jpg"
                       alt="Build 05 01"
                       style={{ width: '300px' }}
                     />
@@ -676,7 +676,7 @@ const BuildGuide: React.FC = () => {
                     </p>
                     <FlexCenter>
                       <img
-                        src="img/build_05_03.jpg"
+                        src="/omni_kbd_hp/img/build_05_03.jpg"
                         alt="Build 05 03"
                         style={{ width: '300px' }}
                       />
@@ -687,12 +687,12 @@ const BuildGuide: React.FC = () => {
                   同じ要領でソケットをはんだ付けします。
                   <HorizontalScrollContainer>
                     <img
-                      src="img/build_05_05.jpg"
+                      src="/omni_kbd_hp/img/build_05_05.jpg"
                       alt="Build 05 05"
                       style={{ width: '300px' }}
                     />
                     <img
-                      src="img/build_05_06.jpg"
+                      src="/omni_kbd_hp/img/build_05_06.jpg"
                       alt="Build 05 06"
                       style={{ width: '300px' }}
                     />
@@ -702,12 +702,12 @@ const BuildGuide: React.FC = () => {
                   リセットスイッチを裏側から入れ、表側からはんだ付けします。
                   <HorizontalScrollContainer>
                     <img
-                      src="img/build_05_10.jpg"
+                      src="/omni_kbd_hp/img/build_05_10.jpg"
                       alt="Build 05 10"
                       style={{ width: '300px' }}
                     />
                     <img
-                      src="img/build_05_11.jpg"
+                      src="/omni_kbd_hp/img/build_05_11.jpg"
                       alt="Build 05 11"
                       style={{ width: '300px' }}
                     />
@@ -718,12 +718,12 @@ const BuildGuide: React.FC = () => {
                   裏側からL字ピンヘッダ差し込み、傾かないようにディスプレイのQIコネクタを両端にさしマスキングテープで固定します。
                   <HorizontalScrollContainer>
                     <img
-                      src="img/build_05_07.jpg"
+                      src="/omni_kbd_hp/img/build_05_07.jpg"
                       alt="Build 05 07"
                       style={{ width: '300px' }}
                     />
                     <img
-                      src="img/build_05_08.jpg"
+                      src="/omni_kbd_hp/img/build_05_08.jpg"
                       alt="Build 05 08"
                       style={{ width: '300px' }}
                     />
@@ -733,7 +733,7 @@ const BuildGuide: React.FC = () => {
                   表側からはんだ付けします。
                   <FlexCenter>
                     <img
-                      src="img/build_05_09.jpg"
+                      src="/omni_kbd_hp/img/build_05_09.jpg"
                       alt="Build 05 09"
                       style={{ width: '300px' }}
                     />
@@ -755,12 +755,12 @@ const BuildGuide: React.FC = () => {
                   (飛び出しが大きい場合はカットして下さい。基板側1mm以下、Pico側3mm以下にしてください。)
                   <HorizontalScrollContainer>
                     <img
-                      src="img/build_06_01.jpg"
+                      src="/omni_kbd_hp/img/build_06_01.jpg"
                       alt="Build 06 01"
                       style={{ width: '300px' }}
                     />
                     <img
-                      src="img/build_06_02.jpg"
+                      src="/omni_kbd_hp/img/build_06_02.jpg"
                       alt="Build 06 02"
                       style={{ width: '300px' }}
                     />
@@ -770,7 +770,7 @@ const BuildGuide: React.FC = () => {
                   基板側とPico側が浮かないようにはんだ付けを行います。
                   <FlexCenter>
                     <img
-                      src="img/build_06_03.jpg"
+                      src="/omni_kbd_hp/img/build_06_03.jpg"
                       alt="Build 06 03"
                       style={{ width: '300px' }}
                     />
@@ -803,7 +803,7 @@ const BuildGuide: React.FC = () => {
                   センサーの白丸があるところが、基板シルクのC13側になるようセンサーを取り付けます。
                   <FlexCenter>
                     <img
-                      src="img/build_07_01.jpg"
+                      src="/omni_kbd_hp/img/build_07_01.jpg"
                       alt="Build 07 01"
                       style={{ width: '300px' }}
                     />
@@ -813,12 +813,12 @@ const BuildGuide: React.FC = () => {
                   浮きがないようにマスキングテープなどで仮固定し、はんだ付けを行います。
                   <HorizontalScrollContainer>
                     <img
-                      src="img/build_07_02.jpg"
+                      src="/omni_kbd_hp/img/build_07_02.jpg"
                       alt="Build 07 02"
                       style={{ width: '300px' }}
                     />
                     <img
-                      src="img/build_07_03.jpg"
+                      src="/omni_kbd_hp/img/build_07_03.jpg"
                       alt="Build 07 03"
                       style={{ width: '300px' }}
                     />
@@ -836,7 +836,7 @@ const BuildGuide: React.FC = () => {
                   配線の被覆を5mm程度向き、予備はんだをしておきます。
                   <FlexCenter>
                     <img
-                      src="img/build_08_01.jpg"
+                      src="/omni_kbd_hp/img/build_08_01.jpg"
                       alt="Build 08 01"
                       style={{ width: '300px' }}
                     />
@@ -848,7 +848,7 @@ const BuildGuide: React.FC = () => {
                   下図でみえている側から差し込み、反対側からはんだ付けしていきます。
                   <FlexCenter>
                     <img
-                      src="img/build_08_05.jpg"
+                      src="/omni_kbd_hp/img/build_08_05.jpg"
                       alt="Build 08 05"
                       style={{ width: '300px' }}
                     />
@@ -901,12 +901,12 @@ const BuildGuide: React.FC = () => {
                   トラボ基板に配線を差し込み、マスキングテープで仮止めし、はんだ付けします。
                   <HorizontalScrollContainer>
                     <img
-                      src="img/build_08_02.jpg"
+                      src="/omni_kbd_hp/img/build_08_02.jpg"
                       alt="Build 08 02"
                       style={{ width: '300px' }}
                     />
                     <img
-                      src="img/build_08_03.jpg"
+                      src="/omni_kbd_hp/img/build_08_03.jpg"
                       alt="Build 08 03"
                       style={{ width: '300px' }}
                     />
@@ -916,7 +916,7 @@ const BuildGuide: React.FC = () => {
                   メイン基板も同様に配線を差し込みはんだ付けします。
                   <FlexCenter>
                     <img
-                      src="img/build_08_06.jpg"
+                      src="/omni_kbd_hp/img/build_08_06.jpg"
                       alt="Build 08 06"
                       style={{ width: '300px' }}
                     />
@@ -926,7 +926,7 @@ const BuildGuide: React.FC = () => {
                   はんだ付け後先端の余分に飛び出している部分はカットします。
                   <FlexCenter>
                     <img
-                      src="img/build_08_04.jpg"
+                      src="/omni_kbd_hp/img/build_08_04.jpg"
                       alt="Build 08 04"
                       style={{ width: '300px' }}
                     />
@@ -946,17 +946,17 @@ const BuildGuide: React.FC = () => {
                   L字ピンヘッダにQIコネクタを差し込み、基板の穴からコネクタを表側に出します。
                   <HorizontalScrollContainer>
                     <img
-                      src="img/build_09_01.jpg"
+                      src="/omni_kbd_hp/img/build_09_01.jpg"
                       alt="Build 09 01"
                       style={{ width: '200px' }}
                     />
                     <img
-                      src="img/build_09_02.jpg"
+                      src="/omni_kbd_hp/img/build_09_02.jpg"
                       alt="Build 09 02"
                       style={{ width: '200px' }}
                     />
                     <img
-                      src="img/build_09_03.jpg"
+                      src="/omni_kbd_hp/img/build_09_03.jpg"
                       alt="Build 09 03"
                       style={{ width: '200px' }}
                     />
@@ -966,7 +966,7 @@ const BuildGuide: React.FC = () => {
                   タッチディスプレイとコネクタを接続します。
                   <FlexCenter>
                     <img
-                      src="img/build_09_04.jpg"
+                      src="/omni_kbd_hp/img/build_09_04.jpg"
                       alt="Build 09 04"
                       style={{ width: '200px' }}
                     />
@@ -977,22 +977,22 @@ const BuildGuide: React.FC = () => {
                   タッチディスプレイのネジ穴がシールで保護されている場合は取り付け前に剥がしてください。
                   <HorizontalScrollContainer>
                     <img
-                      src="img/build_09_05.jpg"
+                      src="/omni_kbd_hp/img/build_09_05.jpg"
                       alt="Build 09 05"
                       style={{ width: '200px' }}
                     />
                     <img
-                      src="img/build_09_06.jpg"
+                      src="/omni_kbd_hp/img/build_09_06.jpg"
                       alt="Build 09 06"
                       style={{ width: '200px' }}
                     />
                     <img
-                      src="img/build_09_07.jpg"
+                      src="/omni_kbd_hp/img/build_09_07.jpg"
                       alt="Build 09 07"
                       style={{ width: '200px' }}
                     />
                     <img
-                      src="img/build_09_08.jpg"
+                      src="/omni_kbd_hp/img/build_09_08.jpg"
                       alt="Build 09 08"
                       style={{ width: '400px' }}
                     />
@@ -1021,7 +1021,7 @@ const BuildGuide: React.FC = () => {
                   下図の画面が立ち上がったら、ダウンロードしたfirmwareをドラッグアンドドロップで移します。
                   <FlexCenter>
                     <img
-                      src="img/build_10_01.jpg"
+                      src="/omni_kbd_hp/img/build_10_01.jpg"
                       alt="Build 10 01"
                       style={{ width: '500px' }}
                     />
@@ -1039,7 +1039,7 @@ const BuildGuide: React.FC = () => {
                   キースイッチが反応するか(各キーのピンをピンセットなどで触り導通させてください。)
                   <FlexCenter>
                     <img
-                      src="img/readme_layer.gif"
+                      src="/omni_kbd_hp/img/readme_layer.gif"
                       alt="Readme Layer"
                       style={{ width: '300px' }}
                     />
@@ -1057,12 +1057,12 @@ const BuildGuide: React.FC = () => {
                   PCBベースLRに2カ所ずつ突起があるので、基板の位置決め穴に合わせてください。
                   <HorizontalScrollContainer>
                     <img
-                      src="img/build_12_01.jpg"
+                      src="/omni_kbd_hp/img/build_12_01.jpg"
                       alt="Build 12 01"
                       style={{ width: '400px' }}
                     />
                     <img
-                      src="img/build_12_02.jpg"
+                      src="/omni_kbd_hp/img/build_12_02.jpg"
                       alt="Build 12 02"
                       style={{ width: '400px' }}
                     />
@@ -1074,12 +1074,12 @@ const BuildGuide: React.FC = () => {
                   トラボPCBベースは角度が垂直に近い方が左手用(25mm用)になります。
                   <HorizontalScrollContainer>
                     <img
-                      src="img/build_12_03.jpg"
+                      src="/omni_kbd_hp/img/build_12_03.jpg"
                       alt="Build 12 03"
                       style={{ width: '400px' }}
                     />
                     <img
-                      src="img/build_12_04.jpg"
+                      src="/omni_kbd_hp/img/build_12_04.jpg"
                       alt="Build 12 04"
                       style={{ width: '400px' }}
                     />
@@ -1089,19 +1089,19 @@ const BuildGuide: React.FC = () => {
                   タッチディスプレイの配線はマスキングテープで止め、センサーの配線をPCBベースに沿わせて固定します。
                   <FlexCenter>
                     <img
-                      src="img/build_12_05.jpg"
+                      src="/omni_kbd_hp/img/build_12_05.jpg"
                       alt="Build 12 05"
                       style={{ width: '400px' }}
                     />
                   </FlexCenter>
                   <HorizontalScrollContainer>
                     <img
-                      src="img/build_12_06.jpg"
+                      src="/omni_kbd_hp/img/build_12_06.jpg"
                       alt="Build 12 06"
                       style={{ width: '400px' }}
                     />
                     <img
-                      src="img/build_12_07.jpg"
+                      src="/omni_kbd_hp/img/build_12_07.jpg"
                       alt="Build 12 07"
                       style={{ width: '400px' }}
                     />
@@ -1111,12 +1111,12 @@ const BuildGuide: React.FC = () => {
                   PCBベースとボトムプレートを仮止めします(一度締結した後に1/4回転程度ネジを戻してください。)。
                   <HorizontalScrollContainer>
                     <img
-                      src="img/build_12_08.jpg"
+                      src="/omni_kbd_hp/img/build_12_08.jpg"
                       alt="Build 12 08"
                       style={{ width: '400px' }}
                     />
                     <img
-                      src="img/build_12_09.jpg"
+                      src="/omni_kbd_hp/img/build_12_09.jpg"
                       alt="Build 12 09"
                       style={{ width: '400px' }}
                     />
@@ -1126,7 +1126,7 @@ const BuildGuide: React.FC = () => {
                   先ほど仮止めした基板とPCBベースのネジを締めて固定します。
                   <FlexCenter>
                     <img
-                      src="img/build_12_02.jpg"
+                      src="/omni_kbd_hp/img/build_12_02.jpg"
                       alt="Build 12 02"
                       style={{ width: '400px' }}
                     />
@@ -1136,7 +1136,7 @@ const BuildGuide: React.FC = () => {
                   ボトムプレートにトラボPCBベースを取り付けます。
                   <FlexCenter>
                     <img
-                      src="img/build_12_10.jpg"
+                      src="/omni_kbd_hp/img/build_12_10.jpg"
                       alt="Build 12 10"
                       style={{ width: '400px' }}
                     />
@@ -1148,17 +1148,17 @@ const BuildGuide: React.FC = () => {
                   三枚目のように奥側から入れると取り付けやすいです。
                   <HorizontalScrollContainer>
                     <img
-                      src="img/build_12_11.jpg"
+                      src="/omni_kbd_hp/img/build_12_11.jpg"
                       alt="Build 12 11"
                       style={{ width: '400px' }}
                     />
                     <img
-                      src="img/build_12_13.jpg"
+                      src="/omni_kbd_hp/img/build_12_13.jpg"
                       alt="Build 12 13"
                       style={{ width: '400px' }}
                     />
                     <img
-                      src="img/build_12_12.jpg"
+                      src="/omni_kbd_hp/img/build_12_12.jpg"
                       alt="Build 12 12"
                       style={{ width: '180px' }}
                     />
@@ -1170,7 +1170,7 @@ const BuildGuide: React.FC = () => {
                   ※基板が少し動く状態でスイッチでPCBとメインケースの位置合わせをしています。
                   <FlexCenter>
                     <img
-                      src="img/build_12_14.jpg"
+                      src="/omni_kbd_hp/img/build_12_14.jpg"
                       alt="Build 12 14"
                       style={{ width: '400px' }}
                     />
@@ -1180,7 +1180,7 @@ const BuildGuide: React.FC = () => {
                   ボトムプレートにボールケースを載せます。
                   <FlexCenter>
                     <img
-                      src="img/build_12_15.jpg"
+                      src="/omni_kbd_hp/img/build_12_15.jpg"
                       alt="Build 12 15"
                       style={{ width: '400px' }}
                     />
@@ -1196,7 +1196,7 @@ const BuildGuide: React.FC = () => {
                   その他の穴はボトムプレートとの間に隙間がある場合など、気になる場合は取り付けてください。
                   <FlexCenter>
                     <img
-                      src="img/build_12_16.jpg"
+                      src="/omni_kbd_hp/img/build_12_16.jpg"
                       alt="Build 12 16"
                       style={{ width: '400px' }}
                     />
@@ -1206,7 +1206,7 @@ const BuildGuide: React.FC = () => {
                   残りのキースイッチ、キーキャップ、トラックボールを取り付けます。
                   <FlexCenter>
                     <img
-                      src="img/readme_top.jpg"
+                      src="/omni_kbd_hp/img/readme_top.jpg"
                       alt="Readme Top"
                       style={{
                         width: '100%',

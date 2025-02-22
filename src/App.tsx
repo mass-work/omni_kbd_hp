@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { , Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -11,13 +11,11 @@ function App() {
     <Container>
       <Header />
       <MainContent>
-        <HashRouter basename="/omni_kbd_hp/">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/buildguide" element={<BuildGuide />} />
             <Route path="/about" element={<About />} />
           </Routes>
-        </HashRouter>
       </MainContent>
       <Footer />
     </Container>

@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "tailwind:init": "tailwindcss init -p",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "esbuild": "^0.25.0",

@@ -14,8 +14,6 @@
     "moduleDetection": "force",
     // "noEmit": false,
 
-
-
     "target": "ESNext",
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
@@ -23,9 +21,6 @@
     "skipLibCheck": true,
     "noEmit": true,
     "allowImportingTsExtensions": true,
-
-
-
 
     /* Linting */
     "strict": true,

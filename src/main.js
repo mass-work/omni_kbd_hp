@@ -4,5 +4,4 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import App from './App';
-const basename = import.meta.env.BASE_URL || '/';
-ReactDOM.createRoot(document.getElementById('root')).render(_jsxs(React.StrictMode, { children: [_jsx(GlobalStyle, {}), _jsx(BrowserRouter, { basename: basename, children: _jsx(App, {}) })] }));
+ReactDOM.createRoot(document.getElementById('root')).render(_jsxs(React.StrictMode, { children: [_jsx(GlobalStyle, {}), _jsx(BrowserRouter, { children: _jsx(App, {}) })] }));

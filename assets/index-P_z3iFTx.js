@@ -407,4 +407,4 @@ Please change the parent <Route path="${M}"> to <Route path="${M==="/"?"*":`${M}
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-`;nm.createRoot(document.getElementById("root")).render(u.jsxs(Ht.StrictMode,{children:[u.jsx(Rg,{}),u.jsx(v0,{children:u.jsx(vv,{})})]}));
+`,wv="/omni_kbd_hp/";nm.createRoot(document.getElementById("root")).render(u.jsxs(Ht.StrictMode,{children:[u.jsx(Rg,{}),u.jsx(v0,{basename:wv,children:u.jsx(vv,{})})]}));

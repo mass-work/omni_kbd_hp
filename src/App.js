@@ -7,7 +7,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import BuildGuide from './pages/BuildGuide';
 function App() {
-    return (_jsxs(Container, { children: [_jsx(Header, {}), _jsx(MainContent, { children: _jsx(HashRouter, { basename: import.meta.env.BASE_URL, children: _jsxs(Routes, { children: [_jsx(Route, { path: "/", element: _jsx(Home, {}) }), _jsx(Route, { path: "/buildguide", element: _jsx(BuildGuide, {}) }), _jsx(Route, { path: "/about", element: _jsx(About, {}) })] }) }) }), _jsx(Footer, {})] }));
+    return (_jsxs(Container, { children: [_jsx(Header, {}), _jsx(MainContent, { children: _jsx(HashRouter, { basename: "/omni_kbd_hp/", children: _jsxs(Routes, { children: [_jsx(Route, { path: "/", element: _jsx(Home, {}) }), _jsx(Route, { path: "/buildguide", element: _jsx(BuildGuide, {}) }), _jsx(Route, { path: "/about", element: _jsx(About, {}) })] }) }) }), _jsx(Footer, {})] }));
 }
 export default App;
 const Container = styled.div `

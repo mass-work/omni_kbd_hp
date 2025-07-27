@@ -48,17 +48,40 @@ const Home: React.FC = () => {
       <IntroSection>
         <IntroTitle>omni CS</IntroTitle>
         <IntroText>
-          omni CS
-          は、デュアルトラックボールとタッチディスプレイを搭載した40%キーボードです。
+          omni CSは、デュアルトラックボールとタッチディスプレイを搭載した40%キーボードです。
           <br />
-          パソコンへの入力作業を効率化し、快適な作業環境を得るために開発しました。
-          <br />
-          左右に配置されたトラックボールで、マウス操作やスクロールを直感的に行うことができ、
-          <br />
-          タッチディスプレイは、アプリやショートカットをいつでも呼び出すことが出来ます。
+          パソコンへの入力作業を効率化し、快適な作業環境を実現するために開発しました。
         </IntroText>
+
+        {/* 特長セクション */}
+        <FeaturesSection>
+          <FeatureTitle>特長</FeatureTitle>
+
+          <FeatureItem>
+            <FeatureSubtitle>デュアルトラックボール</FeatureSubtitle>
+            <ul>
+              <li>
+                右側: <strong>44mm</strong>
+                トラックボールで、モデリングなどの繊細な動きから、デュアルディスプレイの大きな動作まで快適に操作出来ます。
+              </li>
+              <li>
+                左側: <strong>25mm</strong>
+                トラックボールで、上下左右スクロールと豊富なサムクラスタキー(親指)の配置を両立をしました。
+              </li>
+            </ul>
+          </FeatureItem>
+
+          <FeatureItem>
+            <FeatureSubtitle>タッチディスプレイ</FeatureSubtitle>
+            <ul>
+              <li>マクロキーを登録することで、ショートカットやアプリを呼び出せます。 (タッチボタンがVial対応しています。)</li>
+              <li>タッチ操作で、トラックボールの感度調整を視覚的に確認しながら行えます。</li>
+            </ul>
+          </FeatureItem>
+        </FeaturesSection>
+
         <SmallNote>
-          ※詳細は <a href="/about">Aboutページ</a> をご覧ください。
+          ※使い方の詳細は <a href="https://mass-work.github.io/omni_kbd_hp/#/usage">Usageページ</a> をご覧ください。
         </SmallNote>
       </IntroSection>
     </HomeContainer>
@@ -138,12 +161,44 @@ const IntroTitle = styled.h2`
 const IntroText = styled.p`
   font-size: 1rem;
   line-height: 1.6;
+  margin-bottom: 1.5rem;
+`;
+
+/* 特長セクション */
+const FeaturesSection = styled.section`
+  text-align: left;
+  margin-top: 2rem;
+`;
+
+const FeatureTitle = styled.h3`
+  font-size: 1.75rem;
   margin-bottom: 1rem;
+  text-align: center;
+`;
+
+const FeatureItem = styled.div`
+  margin-bottom: 1.5rem;
+
+  ul {
+    padding-left: 1.5rem;
+    list-style-type: disc;
+
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+  }
+`;
+
+const FeatureSubtitle = styled.h4`
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
 `;
 
 const SmallNote = styled.p`
   font-size: 0.875rem;
   color: #666;
+  margin-top: 2rem;
 
   a {
     color: #0088cc;

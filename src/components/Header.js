@@ -2,7 +2,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 export default function Header() {
-    return (_jsx(HeaderContainer, { children: _jsxs(Nav, { children: [_jsx(Title, { children: "omni kbd" }), _jsxs(NavLinks, { children: [_jsx(StyledLink, { to: "/", children: "Home" }), _jsx(StyledLink, { to: "/about", children: "About" }), _jsx(StyledLink, { to: "/build-guide", children: "BuildGuide" })] })] }) }));
+    return (_jsx(HeaderContainer, { children: _jsxs(Nav, { children: [_jsx(Title, { children: "omni kbd" }), _jsxs(NavLinks, { children: [_jsx(StyledLink, { to: "/", children: "Home" }), _jsx(StyledLink, { to: "/usage", children: "Usage" }), _jsx(StyledLink, { to: "/build-guide", children: "Guide" }), _jsx(StyledLink, { to: "/pre-purchase-notice", children: "Notice" }), _jsx(StyledLink, { to: "/vial-setup-guide", children: "Vial Setup" })] })] }) }));
 }
 const HeaderContainer = styled.header `
   position: fixed;

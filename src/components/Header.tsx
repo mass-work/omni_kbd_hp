@@ -9,8 +9,10 @@ export default function Header() {
         <Title>omni kbd</Title>
         <NavLinks>
           <StyledLink to="/">Home</StyledLink>
-          <StyledLink to="/about">About</StyledLink>
-          <StyledLink to="/build-guide">BuildGuide</StyledLink>
+          <StyledLink to="/usage">Usage</StyledLink>
+          <StyledLink to="/build-guide">Guide</StyledLink>
+          <StyledLink to="/pre-purchase-notice">Notice</StyledLink>
+          <StyledLink to="/vial-setup-guide">Vial Setup</StyledLink>
         </NavLinks>
       </Nav>
     </HeaderContainer>

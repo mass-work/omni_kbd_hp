@@ -449,7 +449,7 @@ const BuildGuide: React.FC = () => {
             <SectionContainer id="ボトムプレート(アクリルプレート)">
               <SectionHeading>ボトムプレート(アクリルプレート)</SectionHeading>
               <p>アクリルプレートから保護紙を剥がします。</p>
-              <p>切断面(外周)の加工痕や汚れが気になる場合は、付属している紙やすりを使用し水研ぎして頂くと滑らかで綺麗な面になります。</p>
+              <p>切断面(外周)の加工痕や焼け跡、汚れが気になる場合は、付属している紙やすりを使用し水研ぎしてください。</p>
             </SectionContainer>
           </CollapsibleSection>
 
@@ -729,7 +729,10 @@ const BuildGuide: React.FC = () => {
               <SectionHeading>基板のテスト</SectionHeading>
               <OrderedList>
                 <li>
-                  <a href="https://github.com/mass-work/omni_kbd/tree/main/build" style={{ color: '#a9a9a9', textDecoration: 'none' }}>
+                  <a
+                    href="https://github.com/mass-work/vial-qmk/tree/vial/keyboards/omni_kbd/build"
+                    style={{ color: '#a9a9a9', textDecoration: 'none' }}
+                  >
                     こちら
                   </a>
                   からomni_cs_00_00_00_vial.uf2のfirmwareをダウンロードします。(数値部分はバージョンによって異なります)

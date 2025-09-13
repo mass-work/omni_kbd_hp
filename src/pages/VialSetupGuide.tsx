@@ -34,7 +34,7 @@ const VialSetupGuide: React.FC = () => (
     <Section>
       <Subtitle>1. 注意点など</Subtitle>
       <ul>
-        <li>検証が十分でないため、不具合等があった場合XかDiscordでご連絡下さい。</li>
+        <li>不具合等があった場合XかDiscordでご連絡下さい。</li>
         <li>Gitを使用するため、Gitのインストールが必要です。</li>
         <li>VialのビルドにはQMK MSYSが必要です。(手順は後述)</li>
         <li>Windows 10、11で確認はしましたが、環境によってはうまくいかない可能性があります。</li>
@@ -51,38 +51,20 @@ const VialSetupGuide: React.FC = () => (
       <StepTitle>① プロジェクトを作りたいフォルダへ移動</StepTitle>
       <CopyableCodeBlock code={`cd C:\\Users\\Public`} />
 
-      <StepTitle>② Vialのリポジトリをクローン</StepTitle>
-      <CopyableCodeBlock code={`git clone https://github.com/vial-kb/vial-qmk.git`} />
+      <StepTitle>② omni kbd用のVialのリポジトリをクローン</StepTitle>
+      <CopyableCodeBlock code={`git clone https://github.com/mass-work/vial-qmk.git`} />
+      <p style={{ fontSize: '0.9em', opacity: 0.8, marginTop: 8 }}>
+        ※上記は動作確認済みバージョンです。
+          互換があれば使用中の環境にomni_kbdフォルダのみ追加しても問題ありません。
+      </p>
 
       <StepTitle>③ vial-qmkフォルダへ移動</StepTitle>
       <CopyableCodeBlock code={`cd vial-qmk`} />
 
-      <StepTitle>④ 指定のバージョンへチェックアウト</StepTitle>
-      <p>omni_kbdのバージョンUP時にVialのバージョンは予告なく変更となる可能性があります。</p>
-      <CopyableCodeBlock code={`git checkout 48d3edd66f617421a1b8c58b8e03e9e83f836346`} />
     </Section>
 
     <Section>
-      <Subtitle>3. omni_kbdキーボードの導入</Subtitle>
-      <StepTitle>① フォルダを移動</StepTitle>
-      <CopyableCodeBlock code={`cd C:\\Users\\Public`} />
-
-      <StepTitle>② omni_kbdのファイルを取得</StepTitle>
-      <p>※v00.00.01の箇所は最新のバージョンに合わせ修正し取得してください。</p>
-      <CopyableCodeBlock code={`git clone --branch v00.00.01 --depth 1 https://github.com/mass-work/omni_kbd.git temp_omni`} />
-
-      <StepTitle>③ ファイルをkeyboardsフォルダ内にコピー</StepTitle>
-      <CopyableCodeBlock code={`xcopy temp_omni vial-qmk\\keyboards\\omni_kbd /E /I /Y`} />
-
-      <StepTitle>④ 一時フォルダを削除</StepTitle>
-      <CopyableCodeBlock code={`rmdir /s /q temp_omni`} />
-
-      <p>下記のフォルダ構造になったことを確認してください。</p>
-      <CodeBlock text={`vial-qmk\n └keyboards\n   └omni_kbd`} language="text" theme={dracula} />
-    </Section>
-
-    <Section>
-      <Subtitle>4. QMK MSYSのインストール</Subtitle>
+      <Subtitle>3. QMK MSYSのインストール</Subtitle>
       <p>※この項目以降コマンドプロンプトは使いません。</p>
       <p>
         ファームウェアをビルドするために、まず <strong>QMK MSYS</strong> をインストールしてください。
@@ -97,7 +79,7 @@ const VialSetupGuide: React.FC = () => (
     </Section>
 
     <Section>
-      <Subtitle>5. ファームウェアのビルド</Subtitle>
+      <Subtitle>4. ファームウェアのビルド</Subtitle>
       <StepTitle>① QMK MSYSを起動</StepTitle>
       <p>QMK MSYSを開き、以下のコマンドを実行します。</p>
       <CopyableCodeBlock code={`cd /c/Users/Public/vial-qmk`} />
@@ -113,7 +95,7 @@ const VialSetupGuide: React.FC = () => (
     </Section>
 
     <Section>
-      <Subtitle>6. アイコンの変更・追加手順</Subtitle>
+      <Subtitle>5. アイコンの変更・追加手順</Subtitle>
       <StepTitle>① 画像の準備</StepTitle>
       <p>64x64以下のPNG画像をiconフォルダに保存します。(構成は下記のようになっています。)</p>
       <CodeBlock text={`vial-qmk\n └keyboards\n   └omni_kbd\n     └icon`} language="text" theme={dracula} />
@@ -147,7 +129,7 @@ const VialSetupGuide: React.FC = () => (
       <CopyableCodeBlock code={`image_200 = qp_load_image_mem(gfx_200);`} />
 
       <StepTitle>④ ファームウェアのビルド</StepTitle>
-      <p>変更が完了したら、5.の手順でファームウェアをビルドしマイコンに書き込んでください。</p>
+      <p>変更が完了したら、4.の手順でファームウェアをビルドしマイコンに書き込んでください。</p>
 
       <StepTitle>⑤ 起動gifの変更</StepTitle>
 

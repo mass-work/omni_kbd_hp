@@ -1,44 +1,23 @@
-# .github/workflows/pages.yml
-name: Deploy to GitHub Pages (Yarn)
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]
-
-permissions:
-  contents: read          # ← 最小権限
-  pages: write
-  id-token: write
+    branches:
+      - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-        with: { persist-credentials: false }   # 推奨
-
-      - uses: actions/setup-node@v4            # Node＋Yarn キャッシュ
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: yarn                          # ★ Yarn 用キャッシュ :contentReference[oaicite:0]{index=0}
-
-      # 依存を “スクリプト完全無効” でインストール
-      - run: yarn install --frozen-lockfile --ignore-scripts   # ★ :contentReference[oaicite:1]{index=1}
-        # Yarn 2/3/4 (Berry) を使っている場合は:
-        #   - run: yarn install --immutable --ignore-scripts
-
-      - run: yarn build                          # Vite なら dist/ 作成
-
-      - uses: actions/upload-pages-artifact@v3
-        with: { path: ./dist }
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          node-version: '20'
+      - run: yarn install --frozen-lockfile
+      - run: yarn run build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist

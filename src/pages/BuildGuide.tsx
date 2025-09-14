@@ -677,7 +677,7 @@ const BuildGuide: React.FC = () => {
                   </FlexCenter>
                 </li>
                 <li>
-                  はんだ付け後先端の余分に飛び出している部分はカットします。 
+                  はんだ付け後先端の余分に飛び出している部分はカットします。
                   <FlexCenter>
                     <img src={`${import.meta.env.BASE_URL}img/build_08_04.jpg`} alt="Build 08 04" style={{ width: '300px' }} />
                   </FlexCenter>

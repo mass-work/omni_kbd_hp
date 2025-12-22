@@ -21,7 +21,7 @@ const CopyableCodeBlock: React.FC<{
   return (
     <CodeWrapper>
       <CopyButton onClick={handleCopy}>{copied ? 'Copied!' : 'Copy'}</CopyButton>
-      <CodeBlock text={code} language={language} showLineNumbers={false} theme={dracula} />
+      <CodeBlock text={code} language={language} showLineNumbers={false} theme={dracula as any} />
     </CodeWrapper>
   );
 };
@@ -92,7 +92,7 @@ const VialSetupGuide: React.FC = () => (
  └.build
    └omni_kbd_omni_cs_vial.uf2`}
           language="text"
-          theme={dracula}
+          theme={dracula as any}
         />
       </CodeWrapper>
     </Section>
@@ -108,7 +108,7 @@ const VialSetupGuide: React.FC = () => (
    └omni_kbd
      └icon`}
           language="text"
-          theme={dracula}
+          theme={dracula as any}
         />
       </CodeWrapper>
 

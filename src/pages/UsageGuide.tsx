@@ -22,7 +22,7 @@ const CopyableCodeBlock: React.FC<{
   return (
     <CodeWrapper>
       <CopyButton onClick={handleCopy}>{copied ? 'Copied!' : 'Copy'}</CopyButton>
-      <CodeBlock text={code} language={language} showLineNumbers={false} theme={dracula} />
+      <CodeBlock text={code} language={language} showLineNumbers={false} theme={dracula as any} />
     </CodeWrapper>
   );
 };

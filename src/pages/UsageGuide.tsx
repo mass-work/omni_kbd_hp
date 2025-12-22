@@ -173,7 +173,7 @@ const UsageGuide: React.FC = () => {
           <Section id="custom-keycodes">
             <Subtitle>カスタムキーコード</Subtitle>
             <p>omni kbdをカスタマイズするためのキーコードが設定されています。</p>
-            <p>画像下段の「User」タブから選択することが出来ます。。</p>
+            <p>画像下段の「User」タブから選択することが出来ます。</p>
             <Image src={`${import.meta.env.BASE_URL}img/readme_custom_keycode.jpg`} alt="カスタムキーコード" />
             <ol>
               <li>ディスプレイ切替：TcKey、TbTun、Swget、KeyMp、Stat1でタッチディスプレイが切り替わります。</li>
@@ -187,6 +187,19 @@ const UsageGuide: React.FC = () => {
             <Subtitle>タッチディスプレイ</Subtitle>
             <p>タッチディスプレイは設定されたカスタムキーコードを押下することで切り替わります。</p>
             <p>初期状態ではレイヤー4の右手側上段に設定されています。</p>
+
+            <VideoWrap>
+              <iframe
+                src="https://www.youtube.com/embed/cclZfxZU33Y?si=RFPv1jGXqeazWUuZ"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                loading="lazy"
+              />
+            </VideoWrap>
+
             <ol>
               <li>タッチキーモード：円周上に配置されたボタンをタッチすることでコマンドを実行します。</li>
               <li>トラックボールチューニングモード：トラックボールの動きを調整することが出来ます。</li>
@@ -199,8 +212,10 @@ const UsageGuide: React.FC = () => {
           <Section id="touch-key-mode">
             <Subtitle>タッチキーモード</Subtitle>
             <p>
-              アイコンとキー入力を登録できます。<br />
-              ※タッチキーはレイヤーキーが押されていない状態で使用してください。<br />
+              アイコンとキー入力を登録できます。
+              <br />
+              ※タッチキーはレイヤーキーが押されていない状態で使用してください。
+              <br />
               レイヤー0と1にはそれぞれ別のタッチキーマップを登録できます。Win/Macでコマンドが異なる場合に便利です。
             </p>
 
@@ -407,109 +422,113 @@ export default UsageGuide;
 
 
 
+
 const Container = styled.div`
-  padding: 2rem;
-  max-width: 1100px; 
-  margin: auto;
-  font-family: 'Inter', sans-serif;
+  /* はみ出し根絶：パディング込みの幅計算を全子孫に継承 */
+  box-sizing: border-box;
+  & *, & *::before, & *::after { box-sizing: inherit; }
+  & * { min-width: 0; }
+
+  width: min(100%, 1100px);
+  margin: 0 auto;
+  padding: clamp(10px, 4vw, 24px);
+
+  font-family: 'Inter','Noto Sans JP', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  /* スマホ字を一段小さく */
+  font-size: clamp(14px, 1.45vw, 16px);
+  line-height: 1.85;
+
+  /* 日本語は自然、長い英数は必ず折り返す */
+  word-break: normal;
+  overflow-wrap: anywhere;
+  line-break: strict;
+  text-spacing: ideograph-alpha ideograph-numeric;
+
+  /* すべての <img> を安全に縮小（inline style の width を上書き） */
+  img { max-width: 100% !important; height: auto !important; display: block; }
 `;
 
 const Content = styled.div`
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
-  gap: 24px;
-  align-items: start;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
 
-  @media (max-width: 980px) {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
   }
 `;
 
+/* TOC */
 const Aside = styled.aside`
   position: sticky;
-  top: 3rem;
-  height: max-content;
+  top: 72px;
+  align-self: start;
 
-  @media (max-width: 980px) {
+  @media (max-width: 900px) {
     position: static;
-    order: -1;
+    width: 100%;
+    order: -1; /* スマホで先頭に */
   }
 `;
 
 const Main = styled.main`
-  min-width: 0; 
+  min-width: 0;
 `;
-
 
 const Title = styled.h1`
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  /* スマホで過大にならない */
+  font-size: clamp(20px, 5vw, 28px);
 `;
-
-
 
 const Image = styled.img`
-  width: 100%;
-  max-width: 800px;
-  margin-bottom: 1.5rem;
+  /* 本コンポーネント経由の画像も確実に縮小 */
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
 `;
 
-
-
 const Toc = styled.nav`
-  position: sticky;
-  top: 0.5rem;
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: 12px;
-  padding: 0.75rem 1rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.95rem;
-  z-index: 1;
-  ul {
-    margin: 0;
-    padding-left: 1.1rem;
-  }
-  a {
-    text-decoration: none;
-  }
+  max-width: 100%;
+  overflow-x: auto;
 `;
 
 const Section = styled.section`
-  margin: 2.5rem 0;
-  scroll-margin-top: 5rem; 
+  margin: 2rem 0;
+  scroll-margin-top: 5rem;
 `;
 
 const Subtitle = styled.h2`
-  font-size: 1.7rem;
   font-weight: 800;
-  margin: 2rem 0 1rem;
-  padding-left: 0.75rem;
+  margin: 1.4rem 0 0.9rem;
+  padding-left: 0.7rem;
   border-left: 6px solid #7c3aed;
   line-height: 1.25;
+  /* スマホで少し小さく */
+  font-size: clamp(17px, 4.4vw, 23px);
 `;
 
 const Subheading = styled.h3`
-  font-size: 1.1rem;
   font-weight: 700;
   color: #5a5a5a;
   letter-spacing: 0.02em;
-  margin: 1.25rem 0 0.5rem;
+  margin: 1rem 0 0.5rem;
+  font-size: clamp(14px, 3.6vw, 18px);
 `;
 
 const Callout = styled.div`
   border-left: 4px solid #0ea5e9;
   background: #f0f9ff;
-  padding: 0.75rem 1rem;
+  padding: 0.65rem 0.9rem;
   border-radius: 8px;
-  margin: 0.75rem 0 1rem;
+  margin: 0.65rem 0 0.9rem;
 `;
 
 const Divider = styled.hr`
   border: 0;
   border-top: 1px solid #eee;
-  margin: 1.25rem 0;
+  margin: 1rem 0;
 `;
 
 const Kbd = styled.kbd`
@@ -522,9 +541,37 @@ const Kbd = styled.kbd`
   font-size: 0.9em;
 `;
 
+/* === コード：PCは横スクロール、スマホは切り捨て（ページは広げない） === */
 const CodeWrapper = styled.div`
   position: relative;
-  margin: 1rem 0;
+  margin: 0.8rem 0;
+  width: 100%;
+  overflow: hidden; /* デフォは広げない */
+
+  /* react-code-blocks の最上位div/pre/codeを締め付け */
+  & > *, pre, code, pre > code {
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    white-space: pre;         /* 折り返さず途中で見切れる */
+    display: block;
+  }
+
+  /* デスクトップは横スクロールを復活 */
+  @media (min-width: 721px) {
+    overflow-x: auto;
+    & > *, pre {
+      width: max-content !important;
+      max-width: none !important;
+      overflow: visible !important;
+    }
+  }
+
+  /* モバイルは文字も少し小さく */
+  @media (max-width: 720px) {
+    code { font-size: 0.85em; }
+  }
 `;
 
 const CopyButton = styled.button`
@@ -537,19 +584,28 @@ const CopyButton = styled.button`
   cursor: pointer;
   background-color: #363636;
   color: #fff;
-  font-size: 0.9rem;
-  &:hover {
-    opacity: 0.8;
-  }
+  font-size: 0.85rem;
+  &:hover { opacity: 0.8; }
 `;
 
-// tables
+/* === 表：小画面はテーブル自身の中だけ横スクロール === */
 const Table = styled.table`
   border-collapse: collapse;
   width: 100%;
   text-align: left;
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin: 0.5rem 0 1.2rem;
+
+  /* モバイル対応：自分の枠内で横スクロールし、ページは広げない */
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  min-width: 560px;
+
+  @media (min-width: 721px) {
+    display: table;
+    overflow: visible;
+    min-width: unset;
+  }
 `;
 
 const Thead = styled.thead``;
@@ -566,6 +622,7 @@ const Th = styled.th`
   background: #f4f4f4;
   font-weight: 700;
   font-size: 0.95rem;
+  white-space: nowrap;
 `;
 
 const Td = styled.td`
@@ -573,4 +630,29 @@ const Td = styled.td`
   padding: 8px;
   vertical-align: top;
   font-size: 0.95rem;
+  white-space: nowrap;
+`;
+
+const VideoWrap = styled.div`
+  /* 16:9のアスペクト比で完全レスポンシブ */
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 0.75rem 0 1rem;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #000;
+
+  /* iframeを親いっぱいに */
+  & > iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* 画面が極端に狭い時の保険（親のpaddingで広がらないように） */
+  @media (max-width: 480px) {
+    border-radius: 8px;
+  }
 `;

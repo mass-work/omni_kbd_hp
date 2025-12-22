@@ -2,20 +2,18 @@ import React, { useState, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Checkbox from '@mui/material/Checkbox';
 
-
 /* グローバルスタイル（モノトーンベース） */
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #efefef; /* 背景：やや暗めのグレー */
-    color: #6a6a6a;           /* テキストは淡いホワイト系にしてコントラスト確保 */
+    font-family: 'Helvetica Neue', Arial, 'Inter', 'Noto Sans JP', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    line-height: 1.7;
+    background-color: #efefef;
+    color: #6a6a6a;
     scroll-behavior: smooth;
   }
 `;
 
-/* CollapsibleSection コンポーネント */
 interface CollapsibleSectionProps {
   title: string;
   id: string;
@@ -23,14 +21,8 @@ interface CollapsibleSectionProps {
   children: React.ReactNode;
 }
 
-const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
-  title,
-  id,
-  defaultOpen = false,
-  children,
-}) => {
+const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({ title, id, defaultOpen = false, children }) => {
   const [open, setOpen] = useState(defaultOpen);
-
   return (
     <SectionWrapper id={id}>
       <CollapsibleHeader onClick={() => setOpen(!open)}>
@@ -45,158 +37,138 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
 /* BackToTop コンポーネント */
 const BackToTop: React.FC = () => {
   const [visible, setVisible] = useState(false);
-
-  const toggleVisibility = () => {
-    setVisible(window.pageYOffset > 300);
-  };
-
+  const toggleVisibility = () => setVisible(window.pageYOffset > 300);
   useEffect(() => {
     window.addEventListener('scroll', toggleVisibility);
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   return (
-    <BackToTopButton
-      onClick={scrollToTop}
-      visible={visible}
-      aria-label="Back to top"
-    >
+    <BackToTopButton onClick={scrollToTop} visible={visible} aria-label="Back to top">
       ↑
     </BackToTopButton>
   );
 };
 
-/* スムーススクロール用ハンドラ */
-const handleSmoothScroll = (
-  event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-) => {
+/* スムーススクロール */
+const handleSmoothScroll = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
   event.preventDefault();
   const targetId = event.currentTarget.getAttribute('href')?.substring(1);
-  if (targetId) {
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
+  if (!targetId) return;
+  const el = document.getElementById(targetId);
+  el?.scrollIntoView({ behavior: 'smooth' });
 };
 
-/* TableOfContents コンポーネント */
-const TableOfContents: React.FC = () => {
-  return (
-    <TocNav>
-      <TocHeading>目次</TocHeading>
-      <TocList>
-        <TocListItem>
-          <TocLink href="#キット内容と必要なものの確認" onClick={handleSmoothScroll}>
-            キット内容と必要なものの確認
-          </TocLink>
-        </TocListItem>
+/* 目次 */
+const TableOfContents: React.FC = () => (
+  <TocNav>
+    <TocHeading>目次</TocHeading>
+    <TocList>
+      <TocListItem>
+        <TocLink href="#キット内容と必要なものの確認" onClick={handleSmoothScroll}>
+          キット内容と必要なものの確認
+        </TocLink>
+      </TocListItem>
 
-        <TocListItem>
-          <TocLink href="#部品の準備" onClick={handleSmoothScroll}>
-            部品の準備
-          </TocLink>
-          <TocList>
-            <TocListItem>
-              <TocLink href="#左トラックボールケース" onClick={handleSmoothScroll}>
-                左トラックボールケース
-              </TocLink>
-            </TocListItem>
-            <TocListItem>
-              <TocLink href="#右トラックボールケース" onClick={handleSmoothScroll}>
-                右トラックボールケース
-              </TocLink>
-            </TocListItem>
-            <TocListItem>
-              <TocLink href="#ボトムプレート(アクリルプレート)" onClick={handleSmoothScroll}>
-                ボトムプレート(アクリルプレート)
-              </TocLink>
-            </TocListItem>
-          </TocList>
-        </TocListItem>
-
-        <TocListItem>
-          <TocLink href="#はんだ付け" onClick={handleSmoothScroll}>
-            はんだ付け
-          </TocLink>
-          <TocList>
-            <TocListItem>
-              <TocLink href="#ダイオード、ソケット、リセットスイッチ、L字ピンヘッダのはんだ付け" onClick={handleSmoothScroll}>
-                ダイオード、ソケット、リセットスイッチ、L字ピンヘッダのはんだ付け
-              </TocLink>
-            </TocListItem>
-            <TocListItem>
-              <TocLink href="#マイコンのはんだ付け" onClick={handleSmoothScroll}>
-                マイコンのはんだ付け
-              </TocLink>
-            </TocListItem>
-            <TocListItem>
-              <TocLink href="#センサーのはんだ付け" onClick={handleSmoothScroll}>
-                センサーのはんだ付け
-              </TocLink>
-            </TocListItem>
-            <TocListItem>
-              <TocLink href="#基板と配線のはんだ付け" onClick={handleSmoothScroll}>
-                基板と配線のはんだ付け
-              </TocLink>
-            </TocListItem>
-          </TocList>
-        </TocListItem>
-
-        <TocListItem>
-          <TocLink href="#組み立て" onClick={handleSmoothScroll}>
-            組み立て
-          </TocLink>
-          <TocList>
-            <TocListItem>
-              <TocLink href="#タッチディスプレイの取り付け" onClick={handleSmoothScroll}>
-                タッチディスプレイの取り付け
-              </TocLink>
-            </TocListItem>
-            <TocListItem>
-              <TocLink href="#基板のテスト" onClick={handleSmoothScroll}>
-                基板のテスト
-              </TocLink>
-            </TocListItem>
-            <TocListItem>
-              <TocLink href="#本体の組み立て" onClick={handleSmoothScroll}>
-                本体の組み立て
-              </TocLink>
-            </TocListItem>
-          </TocList>
-        </TocListItem>
-
-        <TocListItem>
-          <TocLink href="#完成" onClick={handleSmoothScroll}>
-            完成
-          </TocLink>
-        </TocListItem>
-
-        <TocListItem>
-          <TocLink href="#最後に" onClick={handleSmoothScroll}>
-            最後に
-          </TocLink>
-
+      <TocListItem>
+        <TocLink href="#部品の準備" onClick={handleSmoothScroll}>
+          部品の準備
+        </TocLink>
+        <TocList>
           <TocListItem>
-            <TocLink href="#トラブルシューティング" onClick={handleSmoothScroll}>
-              トラブルシューティング
+            <TocLink href="#左トラックボールケース" onClick={handleSmoothScroll}>
+              左トラックボールケース
             </TocLink>
-           </TocListItem>
-        </TocListItem>
-      </TocList>
-    </TocNav>
-  );
-};
+          </TocListItem>
+          <TocListItem>
+            <TocLink href="#右トラックボールケース" onClick={handleSmoothScroll}>
+              右トラックボールケース
+            </TocLink>
+          </TocListItem>
+          <TocListItem>
+            <TocLink href="#ボトムプレート(アクリルプレート)" onClick={handleSmoothScroll}>
+              ボトムプレート(アクリルプレート)
+            </TocLink>
+          </TocListItem>
+        </TocList>
+      </TocListItem>
 
-/* BuildGuide コンポーネント */
+      <TocListItem>
+        <TocLink href="#はんだ付け" onClick={handleSmoothScroll}>
+          はんだ付け
+        </TocLink>
+        <TocList>
+          <TocListItem>
+            <TocLink href="#ダイオード、ソケット、リセットスイッチ、L字ピンヘッダのはんだ付け" onClick={handleSmoothScroll}>
+              ダイオード、ソケット、リセットスイッチ、L字ピンヘッダのはんだ付け
+            </TocLink>
+          </TocListItem>
+          <TocListItem>
+            <TocLink href="#マイコンのはんだ付け" onClick={handleSmoothScroll}>
+              マイコンのはんだ付け
+            </TocLink>
+          </TocListItem>
+          <TocListItem>
+            <TocLink href="#センサーのはんだ付け" onClick={handleSmoothScroll}>
+              センサーのはんだ付け
+            </TocLink>
+          </TocListItem>
+          <TocListItem>
+            <TocLink href="#基板と配線のはんだ付け" onClick={handleSmoothScroll}>
+              基板と配線のはんだ付け
+            </TocLink>
+          </TocListItem>
+        </TocList>
+      </TocListItem>
+
+      <TocListItem>
+        <TocLink href="#組み立て" onClick={handleSmoothScroll}>
+          組み立て
+        </TocLink>
+        <TocList>
+          <TocListItem>
+            <TocLink href="#タッチディスプレイの取り付け" onClick={handleSmoothScroll}>
+              タッチディスプレイの取り付け
+            </TocLink>
+          </TocListItem>
+          <TocListItem>
+            <TocLink href="#基板のテスト" onClick={handleSmoothScroll}>
+              基板のテスト
+            </TocLink>
+          </TocListItem>
+          <TocListItem>
+            <TocLink href="#本体の組み立て" onClick={handleSmoothScroll}>
+              本体の組み立て
+            </TocLink>
+          </TocListItem>
+        </TocList>
+      </TocListItem>
+
+      <TocListItem>
+        <TocLink href="#完成" onClick={handleSmoothScroll}>
+          完成
+        </TocLink>
+      </TocListItem>
+
+      <TocListItem>
+        <TocLink href="#最後に" onClick={handleSmoothScroll}>
+          最後に
+        </TocLink>
+        <TocListItem>
+          <TocLink href="#トラブルシューティング" onClick={handleSmoothScroll}>
+            トラブルシューティング
+          </TocLink>
+        </TocListItem>
+      </TocListItem>
+    </TocList>
+  </TocNav>
+);
+
+/* BuildGuide コンポーネント（本文は元のまま） */
 const BuildGuide: React.FC = () => {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const handleCheckboxChange = (index: number) => {
-    setSelectedItems((prevSelected) => (prevSelected.includes(index) ? prevSelected.filter((i) => i !== index) : [...prevSelected, index]));
+    setSelectedItems((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]));
   };
 
   return (
@@ -207,7 +179,6 @@ const BuildGuide: React.FC = () => {
       <HeaderWrapper>
         <HeaderContainer>
           <HeaderImage src={`${import.meta.env.BASE_URL}img/readme_top.jpg`} alt="Readme Top" />
-
           <TextContainer>omni CS build guide</TextContainer>
         </HeaderContainer>
       </HeaderWrapper>
@@ -218,9 +189,9 @@ const BuildGuide: React.FC = () => {
           <TableOfContents />
         </Aside>
 
-        {/* メインコンテンツ */}
+        {/* メインコンテンツ（ここから下の本文・画像・テーブルは元のまま） */}
         <MainContent>
-          {/* 1. キット内容と必要なものの確認 */}
+          {/* ==== 1. キット内容と必要なものの確認 ==== */}
           <CollapsibleSection title="キット内容と必要なものの確認" id="キット内容と必要なものの確認">
             <SectionHeading>キット内容</SectionHeading>
             <StyledTableWrapper>
@@ -262,12 +233,13 @@ const BuildGuide: React.FC = () => {
                     { id: 24, name: 'ねじM2', quantity: '4本', notes: 'タッチディスプレイ用' },
                     { id: 25, name: 'リセットスイッチ', quantity: '1個', notes: '組み込み済みの場合があります。' },
                     { id: 26, name: '25mmPOM球(黒)', quantity: '1個', notes: '' },
+                    { id: 27, name: '紙やすり(水研ぎ用)', quantity: '1個', notes: '' },
                   ].map((item) => (
                     <tr key={item.id}>
                       <StyledTd>
                         <Checkbox checked={selectedItems.includes(item.id)} onChange={() => handleCheckboxChange(item.id)} />
                       </StyledTd>
-                      <StyledTd>{item.id !== 27 ? item.id : '-'}</StyledTd>
+                      <StyledTd>{item.id !== 28 ? item.id : '-'}</StyledTd>
                       <StyledTd>{item.name}</StyledTd>
                       <StyledTd>{item.quantity}</StyledTd>
                       <StyledTd>{item.notes}</StyledTd>
@@ -292,14 +264,14 @@ const BuildGuide: React.FC = () => {
                 <tbody>
                   {[
                     {
-                      id: 27,
+                      id: 28,
                       name: 'Raspberry Pi Pico',
                       quantity: '1個',
                       notes: '互換品に対応していません。type-cなど使用するとケースに干渉する可能性があります',
                     },
-                    { id: 28, name: 'ピンヘッダ 1x20(高さ2.5mm)', quantity: '2個', notes: '' },
+                    { id: 29, name: 'ピンヘッダ 1x20(高さ2.5mm)', quantity: '2個', notes: '' },
                     {
-                      id: 29,
+                      id: 30,
                       name: '1.28インチ円形タッチスクリーンディスプレイ (WaveShare)',
                       quantity: '1個',
                       notes: (
@@ -313,20 +285,20 @@ const BuildGuide: React.FC = () => {
                         </a>
                       ),
                     },
-                    { id: 30, name: 'キースイッチ', quantity: '47個', notes: 'CherryMX互換の物' },
-                    { id: 31, name: 'キーキャップ', quantity: '1U:46個、1～1.5U:1個', notes: 'CherryMX互換の物' },
+                    { id: 31, name: 'キースイッチ', quantity: '47個', notes: 'CherryMX互換の物' },
+                    { id: 32, name: 'キーキャップ', quantity: '1U:46個、1～1.5U:1個', notes: 'CherryMX互換の物' },
                     {
-                      id: 32,
+                      id: 33,
                       name: 'トラックボール',
                       quantity: '44mm(34mmOPの場合は34mm)',
-                      notes: '44mmボールはProtoArc EM03、ELECOM DEFT PROから部品取り、または海外通販サイトで購入してください。',
+                      notes: '44mmボールはProtoArc EM03、ELECOM DEFT PROから部品取り、または海外通販サイトなどで取り扱いがあります。',
                     },
                   ].map((item) => (
                     <tr key={item.id}>
                       <StyledTd>
                         <Checkbox checked={selectedItems.includes(item.id)} onChange={() => handleCheckboxChange(item.id)} />
                       </StyledTd>
-                      <StyledTd>{item.id > 32 ? '-' : item.id}</StyledTd>
+                      <StyledTd>{item.id > 33 ? '-' : item.id}</StyledTd>
                       <StyledTd>{item.name}</StyledTd>
                       <StyledTd>{item.quantity}</StyledTd>
                       <StyledTd>{item.notes}</StyledTd>
@@ -397,7 +369,7 @@ const BuildGuide: React.FC = () => {
             </HorizontalScrollContainer>
           </CollapsibleSection>
 
-          {/* 2. 部品の準備 */}
+          {/* ==== 2. 部品の準備 ==== */}
           <CollapsibleSection title="部品の準備" id="部品の準備">
             {/* 2-1. 左トラックボールケース */}
             <SectionContainer id="左トラックボールケース">
@@ -453,7 +425,7 @@ const BuildGuide: React.FC = () => {
             </SectionContainer>
           </CollapsibleSection>
 
-          {/* 3. はんだ付け */}
+          {/* ==== 3. はんだ付け ==== */}
           <CollapsibleSection title="はんだ付け" id="はんだ付け">
             <AlertGray>
               <p>
@@ -471,7 +443,7 @@ const BuildGuide: React.FC = () => {
             <SectionContainer id="ダイオード、ソケット、リセットスイッチ、L字ピンヘッダのはんだ付け">
               <SectionHeading>ダイオード、ソケット、リセットスイッチ、L字ピンヘッダのはんだ付け</SectionHeading>
               <p>
-                ※この項目はPCBAによりあらかじめ取り付け済みの場合があります。
+                ※この項目はPCBAにより取り付け済みの場合があります。
                 <br />
                 その場合は該当箇所を飛ばして進めてください。
               </p>
@@ -595,14 +567,12 @@ const BuildGuide: React.FC = () => {
             {/* 3-4. 基板と配線のはんだ付け */}
             <SectionContainer id="基板と配線のはんだ付け">
               <SectionHeading>基板と配線のはんだ付け</SectionHeading>
-
               <AlertGray>
                 <p>
                   <strong>TIP:</strong> 配線はまとめてはんだ付け手順を記載していますが、やり難いばあは1本ずつ作業してください。 <br />
                   配線の予備はんだは必ず必要なわけではないですが、撚り線がばらけてショートするリスクがあるので、予備はんだすることを推奨します。
                 </p>
               </AlertGray>
-
               <OrderedList>
                 <li>
                   配線の被覆を5mm程度向き、予備はんだをしておきます。
@@ -686,7 +656,7 @@ const BuildGuide: React.FC = () => {
             </SectionContainer>
           </CollapsibleSection>
 
-          {/* 4. 組み立て */}
+          {/* ==== 4. 組み立て ==== */}
           <CollapsibleSection title="組み立て" id="組み立て">
             {/* 4-1. タッチディスプレイの取り付け */}
             <SectionContainer id="タッチディスプレイの取り付け">
@@ -747,11 +717,22 @@ const BuildGuide: React.FC = () => {
               </OrderedList>
               <p style={{ fontWeight: 'bold', marginTop: '1rem' }}>確認項目</p>
               <UnorderedList>
-                <li>ディスプレイが表示されているか</li>
-                <li>スワイプや長押し(3秒以上)が反応するか</li>
-                <li>レンズがついた状態でトラックボールセンサーが反応するか(指でなぞりカーソル、スクロールが動くか)</li>
                 <li>
                   キースイッチが反応するか(各キーのピンをピンセットなどで触り導通させてください。)
+                  <br />
+                  ※PCBアセンブリ済みであっても確認してください。反応しない場合は、ソケット→ダイオード→マイコンの順ではんだ付けし直してください。
+                </li>
+                <a href="https://config.qmk.fm/#/test" target="_blank" rel="noopener noreferrer">
+                  ▶ QMK Configurator キーテスター
+                </a>
+                <FlexCenter>
+                  <img src={`${import.meta.env.BASE_URL}img/build_11_01.jpg`} alt="Build 11 01" style={{ width: '300px' }} />
+                </FlexCenter>
+
+                <li>ディスプレイが表示されているか</li>
+                <li>スワイプや長押し(3秒以上)が反応するか</li>
+                <li>
+                  レンズがついた状態でトラックボールセンサーが反応するか(指でなぞりカーソル、スクロールが動くか)
                   <FlexCenter>
                     <img src={`${import.meta.env.BASE_URL}img/readme_layer.gif`} alt="Readme Layer" style={{ width: '300px' }} />
                   </FlexCenter>
@@ -862,22 +843,20 @@ const BuildGuide: React.FC = () => {
                     <img
                       src={`${import.meta.env.BASE_URL}img/readme_top.jpg`}
                       alt="Readme Top"
-                      style={{
-                        width: '100%',
-                        maxWidth: '400px',
-                        borderRadius: '0.375rem',
-                      }}
+                      style={{ width: '100%', maxWidth: '400px', borderRadius: '0.375rem' }}
                     />
                   </FlexCenter>
                 </li>
                 <li>
-                  アジャスターのローレット部を回しガタツキが無いように調整します。(ローレット部がめり込むまで回さないでください。硬い場合はラジペンなどでつまんで回してください。)
+                  アジャスターのローレット部を回しガタツキが無いように調整します。
+                  <br />
+                  (ローレット部がめり込むまで回さないでください。硬い場合はペンチなどでつまんで回してください。)
                 </li>
               </OrderedList>
             </SectionContainer>
           </CollapsibleSection>
 
-          {/* 5. 完成 */}
+          {/* ==== 5. 完成 ==== */}
           <CollapsibleSection title="完成" id="完成">
             <p>
               組み立てお疲れさまでした。
@@ -892,36 +871,32 @@ const BuildGuide: React.FC = () => {
             </p>
           </CollapsibleSection>
 
-          {/* 6. 最後に */}
+          {/* ==== 6. 最後に ==== */}
           <CollapsibleSection title="最後に" id="最後に">
             <p>
               もしよろしければ、完成品を
               <a href="https://x.com/home" style={{ color: '#a9a9a9', textDecoration: 'none' }}>
                 X
               </a>
-              などのSNSにハッシュタグ<code>#omni_kbd</code>
-              を付けて投稿いただけるとうれしいです。
+              などのSNSにハッシュタグ<code>#omni_kbd</code>を付けて投稿いただけるとうれしいです。
               <br />
               また、サポートが必要な場合やご意見などありましたら、ディスコードのコミュニティまでご連絡下さい。
             </p>
           </CollapsibleSection>
 
-          {/* 6. トラブルシューティング */}
+          {/* ==== 6. トラブルシューティング ==== */}
           <CollapsibleSection title="トラブルシューティング" id="トラブルシューティング">
-            {/* 6-1. キーの反応不良 */}
+            {/* 6-1 ～ 6-4（本文は元のまま） */}
             <SectionContainer id="キーの反応不良">
               <SectionHeading>キーの反応不良</SectionHeading>
-
               <p>特定のキーのみが反応しない場合</p>
               <OrderedList>
                 <li>反応しないキーのスイッチソケット、ダイオードをはんだ付けし直してください。</li>
               </OrderedList>
-
               <p>1キー押したときに特定の行、列が全て反応する</p>
               <OrderedList>
                 <li>ダイオードの向きが正しいか確認してください。</li>
               </OrderedList>
-
               <p>特定の行、列が全て反応しない</p>
               <OrderedList>
                 <li>raspberry pi pico、ピンヘッダ、基板のはんだ付けを確認してください。</li>
@@ -929,7 +904,6 @@ const BuildGuide: React.FC = () => {
               </OrderedList>
             </SectionContainer>
 
-            {/* 6-2. タッチディスプレイの反応不良 */}
             <SectionContainer id="タッチディスプレイの反応不良">
               <SectionHeading>タッチディスプレイの不良</SectionHeading>
               <OrderedList>
@@ -939,7 +913,6 @@ const BuildGuide: React.FC = () => {
               </OrderedList>
             </SectionContainer>
 
-            {/* 6-3. マウスセンサーの反応不良 */}
             <SectionContainer id="マウスセンサーの反応不良">
               <SectionHeading>マウスセンサーの反応不良</SectionHeading>
               <OrderedList>
@@ -948,7 +921,6 @@ const BuildGuide: React.FC = () => {
               </OrderedList>
             </SectionContainer>
 
-            {/* 6-4. 挙動がおかしい */}
             <SectionContainer id="挙動がおかしい">
               <SectionHeading>挙動がおかしい</SectionHeading>
               <OrderedList>
@@ -966,28 +938,42 @@ const BuildGuide: React.FC = () => {
 
 export default BuildGuide;
 
-/* 全体レイアウト */
+/* ================== styled ================== */
+
+/* 全体ラッパ：スマホ字小さめ＋和文組版＋はみ出し保険 */
 const BuildGuideContainer = styled.div`
+  box-sizing: border-box;
   min-height: 100vh;
-  background-color: transparent; /* 背景はグローバルスタイルで統一 */
+
+  /* スマホ字は少し小さめ */
+  font-size: clamp(14px, 1.45vw, 16px);
+
+  /* 和文＋欧文混在の読みやすさ */
+  word-break: normal;
+  overflow-wrap: anywhere; /* 長いURL/英数は必ず折り返す */
+  line-break: strict;
+  text-spacing: ideograph-alpha ideograph-numeric;
+
+  /* Flex/Grid 子のはみ出し保険 */
+  & * {
+    min-width: 0;
+  }
 `;
 
 /* ヘッダー */
 const HeaderWrapper = styled.header`
-  /* background-color: #6a6a6a;  */
-  /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); */
   margin-bottom: 1rem;
 `;
 
 const HeaderContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 0.5rem;
+  padding: clamp(10px, 3vw, 16px) clamp(8px, 3vw, 12px);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: clamp(12px, 3vw, 32px);
 `;
 
 const HeaderImage = styled.img`
@@ -1001,11 +987,11 @@ const HeaderImage = styled.img`
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   text-align: center;
   color: #6a6a6a;
   font-weight: bold;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   @media (min-width: 450px) {
     margin-top: 0;
     margin-left: 1rem;
@@ -1013,38 +999,46 @@ const TextContainer = styled.div`
   }
 `;
 
-/* メインレイアウト */
+/* メインレイアウト：中央寄せ＋内側余白 */
 const ContentContainer = styled.div`
-  max-width: 1000px;
-  background-color: #fff;
-  width: auto;
+  box-sizing: border-box;
+  width: min(100%, 1040px);
   margin: 0 auto;
-  padding: 0 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  @media (min-width: 450px) {
-    flex-direction: row;
+  padding: clamp(8px, 3vw, 20px); /* ← 12/24 → 8/20 に圧縮 */
+
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 20px; /* ← 24 → 20 に */
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
   }
 `;
 
+
 const Aside = styled.aside`
-  width: 100%;
-  margin-bottom: 2rem;
-  @media (min-width: 450px) {
-    width: 25%;
-    margin-bottom: 0;
-    margin-right: 1.5rem;
+  position: sticky;
+  top: 72px;
+  align-self: start;
+
+  @media (max-width: 900px) {
+    position: static;
+    width: 100%;
+    margin-bottom: 16px;
   }
 `;
 
 const MainContent = styled.main`
-  width: 100%;
-  @media (min-width: 450px) {
-    width: 75%;
+  width: auto; /* 以前の 75% 指定を撤廃しはみ出し防止 */
+  h1,
+  h2,
+  h3 {
+    line-height: 1.35;
+    margin: 1.1em 0 0.55em;
   }
 `;
 
+/* 目次（幅固定→可変に、モバイルは全幅） */
 const TocNav = styled.nav`
   position: sticky;
   top: 1rem;
@@ -1054,14 +1048,19 @@ const TocNav = styled.nav`
   border-radius: 0.375rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
 
-  /* 幅を固定 or 最大幅で制限 */
-  width: 180px;
-  /* もしくは max-width: 200px; として可変にすることも可能 */
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 260px;
+
+  @media (max-width: 900px) {
+    position: static;
+    max-width: none;
+  }
 `;
 
 const TocHeading = styled.h3`
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
   color: #6a6a6a;
 `;
@@ -1083,25 +1082,27 @@ const TocListItem = styled.li`
 const TocLink = styled.a`
   color: #6a6a6a;
   text-decoration: none;
-
-  /* ここで省略表示 */
-  display: block; /* block or inline-block が必要 */
-  width: 100%; /* 親要素の幅いっぱいに合わせる */
-  white-space: nowrap; /* 折り返しをしない */
-  overflow: hidden; /* はみ出しを隠す */
-  text-overflow: ellipsis; /* 文字があふれたら「…」を付ける */
-
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   &:hover {
     text-decoration: underline;
   }
 `;
 
-/* CollapsibleSection 用スタイル */
+/* CollapsibleSection */
 const SectionWrapper = styled.section`
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   border: 1px solid #3a3a3a;
   border-radius: 0.375rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  @media (max-width: 480px) {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+  }
 `;
 
 const CollapsibleHeader = styled.div`
@@ -1112,28 +1113,57 @@ const CollapsibleHeader = styled.div`
   padding: 0.5rem 1rem;
   cursor: pointer;
   user-select: none;
+  @media (max-width: 480px) {
+    min-height: 30px; 
+    padding: 0.2rem 0.75rem;
+  }
+
+  & > span {
+    flex: 0 0 auto;
+    font-size: 1.1rem;
+    line-height: 1;
+    opacity: 0.9;
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+  }
 `;
 
 const CollapsibleTitle = styled.h2`
-  font-size: 1.2rem;
-  font-weight: bold;
   margin: 0;
+  font-weight: 700;
+  line-height: 1.3;
+
+  /* ← ここが肝：スマホで小さめ、PCでは従来程度 */
+  font-size: clamp(15px, 3.6vw, 18px);
+
+  /* 日本語の改行を自然に、長い語は必ず折り返す */
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 `;
 
 const CollapsibleContent = styled.div<{ open: boolean }>`
-  padding: ${({ open }) => (open ? '1rem' : '0 1rem')};
+  padding: ${({ open }) => (open ? '0.9rem' : '0 0.9rem')};
   transition: all 0.3s;
   max-height: ${({ open }) => (open ? '200000px' : '0')};
   opacity: ${({ open }) => (open ? 1 : 0)};
   overflow: hidden;
+
+  @media (max-width: 480px) {
+    padding: ${({ open }) => (open ? '0.7rem' : '0 0.7rem')}; /* ← 詰める */
+  }
 `;
 
-/* BackToTop ボタン */
+
+/* BackToTop */
 const BackToTopButton = styled.button<{ visible: boolean }>`
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
-  padding: 0.75rem;
+  padding: 0.65rem;
   background-color: #efefef;
   color: #6a6a6a;
   border: none;
@@ -1145,10 +1175,20 @@ const BackToTopButton = styled.button<{ visible: boolean }>`
   cursor: pointer;
 `;
 
-/* テーブル用スタイル */
+/* テーブル（横スクロール保険） */
 const StyledTableWrapper = styled.div`
+  width: 100%;
   overflow-x: auto;
-  margin-bottom: 0.1rem;
+  -webkit-overflow-scrolling: touch;
+
+  table {
+    min-width: 640px;
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    padding: 8px;
+  }
 `;
 
 const StyledTable = styled.table`
@@ -1168,23 +1208,21 @@ const StyledTd = styled.td`
   border: 1px solid #444;
   padding: 0.1rem 0.5rem;
   color: #6a6a6a;
-  font-size: 0.8rem;
-  text-align: center; /* チェックボックスを中央寄せ */
+  font-size: 0.85rem;
+  text-align: center;
 `;
 
-/* アラート（モノトーン版） */
+/* アラート */
 const AlertGray = styled.div`
   background-color: #efefef;
   border-left: 4px solid #666;
   color: #6a6a6a;
   padding: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.6rem;
 `;
-
 const AlertGrayWarning = styled(AlertGray)`
   border-left-color: #888;
 `;
-
 const AlertGrayNote = styled(AlertGray)`
   border-left-color: #555;
 `;
@@ -1192,70 +1230,108 @@ const AlertGrayNote = styled(AlertGray)`
 /* リスト */
 const OrderedList = styled.ol`
   list-style-type: decimal;
-  margin-left: 1.5rem;
-  margin-bottom: 1rem;
+  margin-left: 1rem; 
+  margin-bottom: 0.8rem;
   li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.45rem;
   }
 `;
-
 const UnorderedList = styled.ul`
   list-style-type: disc;
-  margin-left: 1.5rem;
-  margin-bottom: 1rem;
+  margin-left: 1rem; 
+  margin-bottom: 0.8rem;
   li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.45rem;
   }
 `;
 
-/* 画像等のフレックスコンテナ */
+
 const FlexWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 0.5rem;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+
+  img {
+    border-radius: 0.375rem;
+    height: auto;
+
+    max-width: calc(50% - 0.75rem);
+    @media (max-width: 520px) {
+      max-width: none;
+      width: clamp(68%, 82vw, 520px) !important; 
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+  }
 `;
+
 
 const FlexCenter = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 0.5rem;
+
+  img {
+    width: clamp(68%, 82vw, 520px) !important;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.375rem;
+  }
+
+  @media (max-width: 420px) {
+    img {
+      width: 82vw !important;
+    } 
+  }
 `;
 
-// const FlexWrapCenter = styled.div`
-//   display: flex;
-//   flex-wrap: wrap;
-//   gap: 1rem;
-//   margin-top: 0.5rem;
-//   justify-content: center;
-// `;
 
-/* 各セクションのコンテナ */
+/* セクション */
 const SectionContainer = styled.section`
   margin-bottom: 2rem;
 `;
-
-/* セクション見出し */
 const SectionHeading = styled.h3`
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
   color: #6a6a6a;
 `;
 
 const HorizontalScrollContainer = styled.div`
-  display: flex; /* フレックスコンテナで横方向に並べる */
-  flex-wrap: nowrap; /* 折り返ししない */
-  gap: 1rem; /* 画像同士の隙間 */
-  overflow-x: auto; /* 横スクロールを許可 */
-  overflow-y: hidden; /* 縦方向のスクロールバーは表示しない（必要に応じて） */
-  margin-top: 1rem; /* 余白調整 */
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.75rem; 
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-top: 0.8rem;
 
-  /* 画像の基本スタイル */
   img {
-    flex: 0 0 auto; /* 要素幅を自動で決める（収まり切らない場合は横スクロール） */
-    max-width: 300px; /* 必要に応じて画像の最大幅を制限 */
+    flex: 0 0 auto;
     height: auto;
     border-radius: 0.375rem;
+    max-width: 280px; 
   }
+
+  @media (max-width: 520px) {
+    img {
+      max-width: 220px;
+    } 
+  }
+`;
+
+
+/* 互換：既存の ImageContainer / Image を残してもOK */
+const ImageContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+`;
+const Image = styled.img`
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 0.375rem;
 `;

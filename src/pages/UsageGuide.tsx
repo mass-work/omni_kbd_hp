@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { CodeBlock, dracula } from 'react-code-blocks';
 
-
 const CopyableCodeBlock: React.FC<{
   code: string;
   language?: string;
@@ -33,9 +32,7 @@ const go = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
 
-
-
-const UsageGuide: React.FC = () => {
+const UsageGuideVer010000: React.FC = () => {
   return (
     <Container>
       <Title>omni kbd 使い方</Title>
@@ -43,6 +40,7 @@ const UsageGuide: React.FC = () => {
       <Content>
         {/* 左サイドバー（TOC） */}
         <Aside>
+          タッチディスプレイの表示モードは、キーマップに登録したカスタムキー
           <Toc>
             <strong>目次</strong>
             <ul>
@@ -82,11 +80,6 @@ const UsageGuide: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="#swipe" onClick={go('swipe')}>
-                  スワイプジェスチャー(β)
-                </a>
-              </li>
-              <li>
                 <a href="#keymap-view" onClick={go('keymap-view')}>
                   キーマップ表示(β)
                 </a>
@@ -113,13 +106,40 @@ const UsageGuide: React.FC = () => {
               <a href="https://vial.rocks/" target="_blank" rel="noreferrer">
                 <strong>Vial</strong>
               </a>
-              で変更できます。 Vialの基本的な使い方については、
+              で変更できます。Vialの基本的な使い方については、
               <a href="https://get.vial.today/manual/layers.html" target="_blank" rel="noreferrer">
                 <strong>公式サイト</strong>
               </a>
               やブログ記事を参考にしてください。
             </p>
-            <Image src={`${import.meta.env.BASE_URL}img/readme_vial_allkeymap.jpg`} alt="Vial キーマップ" />
+            <Callout>
+              Ver01.00.00ではキーマップのレイアウトと各機能の登録場所が変更されています。
+              旧バージョンのキーマップをそのまま使用せず、下のキーマップ画像を確認して設定してください。
+            </Callout>
+            <Image src={`${import.meta.env.BASE_URL}img/readme_v01_vial_allkeymap.jpg`} alt="Ver01.00.00 Vial キーマップ" />
+            <br />
+            <br />
+            <Image src={`${import.meta.env.BASE_URL}img/readme_v01_vial_allkeymap_TB.jpg`} alt="Ver01.00.00 Vial キーマップ" />
+
+            <Subheading>キーマップから設定できる機能</Subheading>
+            <ul>
+              <li>通常のキー入力、レイヤー切り替え、マクロ</li>
+              <li>タッチキーモードへ切り替えるカスタムキーコード</li>
+              <li>左右トラックボールの操作</li>
+              <li>タッチディスプレイのスワイプ操作</li>
+            </ul>
+
+            <Subheading>トラックボール操作の設定</Subheading>
+            <p>
+              トラックボールの各操作は、キーマップ上のトラックボールの位置にある十字配置部にキーコードを登録して変更できます。
+              全て空にするとポインター操作になり、スクロールやキー入力を登録するの登録したボタンが入力されます。 ※マクロの登録できません。
+            </p>
+
+            <Subheading>スワイプ操作の設定</Subheading>
+            <p>
+              中央の十字配置部にキーコードを登録することで、タッチディスプレイのスワイプ操作に対応するキーを設定できます。
+              スワイプ操作はタッチキーモードとスワイプモードで有効になります。
+            </p>
           </Section>
 
           <Section id="os-detect">
@@ -172,21 +192,33 @@ const UsageGuide: React.FC = () => {
 
           <Section id="custom-keycodes">
             <Subtitle>カスタムキーコード</Subtitle>
-            <p>omni kbdをカスタマイズするためのキーコードが設定されています。</p>
-            <p>画像下段の「User」タブから選択することが出来ます。</p>
-            <Image src={`${import.meta.env.BASE_URL}img/readme_custom_keycode.jpg`} alt="カスタムキーコード" />
+            <p>omni kbd固有の機能は、Vial下段の「User」タブにあるカスタムキーコードから設定できます。</p>
+            <Image src={`${import.meta.env.BASE_URL}img/readme_v01_custom_keycode.jpg`} alt="Ver01.00.00 カスタムキーコード" />
             <ol>
-              <li>ディスプレイ切替：TcKey、TbTun、Swget、KeyMp、Stat1でタッチディスプレイが切り替わります。</li>
-              <li>ディスプレイの色変更：〇〇H、S、V、の値を±することで特定のモードで画面や文字の色を変更できます。</li>
-              <li>右手ボールスクロール：TbrCgを押している間右トラックボールでスクロールできます。</li>
-              {/* <li>オートマウスレイヤー：AmlTgで有効/無効を切り替えます。</li> */}
+              <li>タッチキーモード切替：タッチキーモードを表示するカスタムキーコードを任意のキーへ登録します。</li>
+              <li>トラックボールチューニング：トラックボール調整画面を表示します。</li>
+              <li>キーマップ表示：キーマップ表示モードへ切り替えます。</li>
+              <li>ステータス管理：ステータス管理モードへ切り替えます。</li>
+              <li>ディスプレイカラー：各モードの画面色や文字色を調整します。</li>
             </ol>
+            <p>カスタムキーコードの表示名は、Vial上の「User」タブを確認してください。</p>
           </Section>
 
           <Section id="touch-display">
             <Subtitle>タッチディスプレイ</Subtitle>
-            <p>タッチディスプレイは設定されたカスタムキーコードを押下することで切り替わります。</p>
-            <p>初期状態ではレイヤー4の右手側上段に設定されています。</p>
+            <p>
+              タッチディスプレイは
+              <a href="https://omni-app-web.pages.dev/" target="_blank" rel="noreferrer">
+                <strong>カスタマイズアプリ</strong>
+              </a>
+              を使用して、待機画像の変更や、タッチキーモードのアイコン/コマンドのカスタムができます。
+            </p>
+            <Image src={`${import.meta.env.BASE_URL}img/readme_omniapp_01.jpg`} alt="Ver01.00.00 カスタムキーコード" />
+            <Image src={`${import.meta.env.BASE_URL}img/readme_omniapp_02.jpg`} alt="Ver01.00.00 カスタムキーコード" />
+
+            <p>タッチディスプレイの表示モードは、キーマップに登録したカスタムキーコードで切り替えます。</p>
+            <p>各モードの呼び出し位置は、Ver01.00.00の初期キーマップを確認してください。</p>
+            <p>※最新のファームウェアでは、タッチキーモードのレイヤー変更がカスタムキーコードでの入力に変更になります。</p>
 
             <VideoWrap>
               <iframe
@@ -201,39 +233,43 @@ const UsageGuide: React.FC = () => {
             </VideoWrap>
 
             <ol>
-              <li>タッチキーモード：円周上に配置されたボタンをタッチすることでコマンドを実行します。</li>
-              <li>トラックボールチューニングモード：トラックボールの動きを調整することが出来ます。</li>
-              <li>スワイプジェスチャーモード(ベータ)：スワイプすることで、コマンドを実行します。</li>
-              <li>キーマップ表示モード(ベータ)：JIS配列のキーコードに対応した文字や記号をディスプレイに表示します。</li>
-              <li>ステータス管理モード：OS自動検出/デフォルトレイヤー/高精度スクロール/スクロール方向/AML/タッチ感度の設定が出来ます。</li>
+              <li>タッチキーモード：タッチボタンとスワイプ操作で、キーマップに設定したキー入力を実行します。</li>
+              <li>トラックボールチューニングモード：左右トラックボールの動きを調整します。</li>
+              <li>キーマップ表示モード(β)：JIS配列のキーコードに対応した文字や記号を表示します。</li>
+              <li>ステータス管理モード：OS切替、オートマウスレイヤー、ハプティック、タッチ操作を設定します。</li>
             </ol>
           </Section>
 
           <Section id="touch-key-mode">
             <Subtitle>タッチキーモード</Subtitle>
             <p>
-              アイコンとキー入力を登録できます。
+              円周上のタッチボタンとスワイプ操作に、キー入力やショートカットを設定できます。
               <br />
-              ※タッチキーはレイヤーキーが押されていない状態で使用してください。
-              <br />
-              レイヤー0と1にはそれぞれ別のタッチキーマップを登録できます。Win/Macでコマンドが異なる場合に便利です。
+              タッチキーモードへの切り替えは、キーマップに登録したカスタムキーコードから行います。
             </p>
 
-            <Image src={`${import.meta.env.BASE_URL}img/readme_vial_touchkeymap.jpg`} alt="タッチキーマップ" />
-            <Image src={`${import.meta.env.BASE_URL}img/readme_icon_change.gif`} alt="アイコン変更" style={{ width: '300px' }} />
+            <Image src={`${import.meta.env.BASE_URL}img/readme_v01_touchkeymap.jpg`} alt="Ver01.00.00 タッチキーマップ" />
+            <p>下段：描画部分について、M254はアプリから書き込んだ画像表示となります。</p>
+
+            <Subheading>タッチボタンの設定</Subheading>
             <ol>
-              <li>layer0 に入力したいキーを設定します。</li>
-              <li>この時にマクロボタンを登録することで、様々な機能を付与することができます。</li>
-              <li>layer2 で呼び出すアイコンを設定します。</li>
-              <li>マクロボタンを設定することで、各ボタンに対応したアイコンが呼び出されます。</li>
+              <li>Vialでタッチキー用の登録位置を開きます。</li>
+              <li>各タッチボタンへ、実行したいキー入力またはマクロを設定します。</li>
+              <li>必要に応じて、レイヤーごとに異なる操作を設定します。</li>
             </ol>
+
+            <Subheading>スワイプ操作の設定</Subheading>
             <ol>
-              ※呼び出されるアイコンは「
-              <a href="https://github.com/mass-work/omni_kbd/blob/main/icon.md" target="_blank" rel="noreferrer">
-                こちら
-              </a>
-              」を参照してください。
+              <li>キーマップ上のスワイプ用登録位置を開きます。</li>
+              <li>上・下・左・右へ、実行したいキー入力またはマクロを設定します。</li>
+              <li>タッチキーモードで画面をスワイプすると、登録した操作が実行されます。</li>
             </ol>
+
+            <Subheading>アイコンの設定</Subheading>
+            <p>
+              タッチキーに表示するアイコンは、omni-appから登録できます。アイコンとキー入力を組み合わせることで、
+              使用する機能を画面上で分かりやすく表示できます。
+            </p>
           </Section>
 
           <Section id="tb-tuning">
@@ -250,20 +286,19 @@ const UsageGuide: React.FC = () => {
           </Section>
 
           <Section id="status-mode">
-            <Subtitle>ステータス管理モード：</Subtitle>
-            <Image src={`${import.meta.env.BASE_URL}img/readme_status1.jpg`} alt="TBTUNE" style={{ width: '300px' }} />
+            <Subtitle>ステータス管理モード</Subtitle>
+            <Image src={`${import.meta.env.BASE_URL}img/readme_v01_status.jpg`} alt="Ver01.00.00 ステータス管理モード" style={{ width: '300px' }} />
             <p>
-              omni kbdのステータスを管理します。
+              omni kbdの動作設定をタッチディスプレイから変更します。
               <br />
-              タッチ操作でON/OFFを切り替えられます。
+              各項目をタッチするとON/OFFを切り替えられます。
               <br />
-              ON時にバーが出る項目はバーをタッチすることでパラメータの調整が出来ます。
+              調整バーが表示される項目は、バーをタッチして値を変更できます。
             </p>
             <Table>
               <Thead>
                 <Trow>
                   <Th>表示</Th>
-                  <Th>パラメータ</Th>
                   <Th>概要</Th>
                   <Th>説明</Th>
                 </Trow>
@@ -271,111 +306,48 @@ const UsageGuide: React.FC = () => {
               <tbody>
                 <Trow>
                   <Td>OS</Td>
-                  <Td>―</Td>
                   <Td>OS自動検出</Td>
-                  <Td>
-                    Win / Mac を自動検出し設定を切り替えます。 <br />
-                  </Td>
+                  <Td>Windows / macOSの自動検出をON/OFFします。</Td>
                 </Trow>
                 <Trow>
-                  <Td>Win/Mac/Bas/Sub</Td>
-                  <Td>―</Td>
-                  <Td>デフォルトレイヤー表示</Td>
+                  <Td>Win / Mac / Bas / Sub</Td>
+                  <Td>デフォルトレイヤー</Td>
                   <Td>
-                    デフォルトレイヤーの状態を表示します。 <br />
-                    自動検出ON：Win/Macが表示されます。 <br />
-                    自動検出OFF：Bas/Subを切り替えできます。
+                    自動検出ON時は検出したOSを表示します。
+                    <br />
+                    自動検出OFF時はBas / Subを手動で切り替えます。
                   </Td>
-                </Trow>
-                <Trow>
-                  <Td>HRV</Td>
-                  <Td>RES, VAL</Td>
-                  <Td>高精度スクロール（垂直）</Td>
-                  <Td>
-                    垂直方向の高精度スクロールを有効にします。 <br />
-                    RES：レポート送信頻度を変更します。 <br />
-                    VAL：送信値を調整します。 <br />
-                    ※挙動が不安定な場合RESを大きくしてください。
-                  </Td>
-                </Trow>
-                <Trow>
-                  <Td>HRH</Td>
-                  <Td>RES, VAL</Td>
-                  <Td>高精度スクロール（水平）</Td>
-                  <Td>
-                    水平方向の高精度スクロールを有効にします。 <br />
-                    RES：レポート送信頻度を変更します。 <br />
-                    VAL：送信値を調整します。 <br />
-                    ※挙動が不安定な場合RESを大きくしてください。
-                  </Td>
-                </Trow>
-                <Trow>
-                  <Td>SCI</Td>
-                  <Td>―</Td>
-                  <Td>スクロール方向反転</Td>
-                  <Td>スクロール方向を反転します。</Td>
                 </Trow>
                 <Trow>
                   <Td>AML</Td>
-                  <Td>―</Td>
-                  <Td>オートマウスレイヤー</Td>
-                  <Td>有効／無効を切り替えます。</Td>
+                  <Td>Auto mouse layer</Td>
+                  <Td>トラックボール操作時にマウス用レイヤーへ自動で切り替える機能をON/OFFします。</Td>
                 </Trow>
                 <Trow>
-                  <Td>TRP</Td>
-                  <Td>HLD, RPT</Td>
-                  <Td>タッチ感度調整</Td>
+                  <Td>HPB</Td>
+                  <Td>Trackball haptic</Td>
                   <Td>
-                    HLD：連続入力までの遅延時間を設定します。 <br />
-                    RPT：2回目以降のリピート間隔を調整します。
+                    トラックボール操作に連動するハプティックフィードバックをON/OFFします。
+                    <br />
+                    ※シリーズにより対応状況が異なります。振動モータOPに対応している場合は有効にできます。
                   </Td>
+                </Trow>
+                <Trow>
+                  <Td>HPT</Td>
+                  <Td>Touch display haptic</Td>
+                  <Td>
+                    タッチディスプレイ操作時のハプティックフィードバックをON/OFFします。
+                    <br />
+                    ※シリーズにより対応状況が異なります。振動モータOPに対応している場合は有効にできます。
+                  </Td>
+                </Trow>
+                <Trow>
+                  <Td>TOC</Td>
+                  <Td>Touch repeat interval</Td>
+                  <Td>タッチ操作を押し続けたときの連続入力開始時間と、2回目以降の入力間隔を調整します。</Td>
                 </Trow>
               </tbody>
             </Table>
-            <strong>高精度スクロールの設定</strong> <br />
-            HRV/HRHはWindowsとmacOSで挙動が異なります。 <br />
-            Bas(Win)はWindow向け、Sub(mac)はmacOS向けの設定になっています。 <br />
-            BasでMacを使う場合など、Subの設定を参考に調整してください。
-          </Section>
-
-          <Section id="swipe">
-            <Subtitle>スワイプジェスチャ―モード(ベータ版)</Subtitle>
-            <ul>
-              <li>スワイプにより、ショートカットの入力等が出来ます。</li>
-              <li>
-                レイヤー0
-                <ul>
-                  <li>左：Ctrl+Z</li>
-                  <li>右：Ctrl+Y</li>
-                  <li>上：Ctrl+S</li>
-                </ul>
-              </li>
-              <li>
-                レイヤー1
-                <ul>
-                  <li>左：Ctrl+PgUp</li>
-                  <li>右：Ctrl+PgDown</li>
-                  <li>上：Ctrl+N</li>
-                </ul>
-              </li>
-              <li>
-                レイヤー2
-                <ul>
-                  <li>左：Ctrl+Win+←</li>
-                  <li>右：Ctrl+Win+→</li>
-                  <li>上：Ctrl+Win+D</li>
-                </ul>
-              </li>
-              <li>
-                レイヤー3
-                <ul>
-                  <li>左：F14</li>
-                  <li>右：F13</li>
-                  <li>上：F15</li>
-                </ul>
-              </li>
-              <li>本機能はベータ版となるので、カスタマイズにはファームウェアの書き換えが必要です。</li>
-            </ul>
           </Section>
 
           <Section id="keymap-view">
@@ -417,23 +389,32 @@ const UsageGuide: React.FC = () => {
   );
 };
 
-export default UsageGuide;
-
-
-
-
+export default UsageGuideVer010000;
 
 const Container = styled.div`
   /* はみ出し根絶：パディング込みの幅計算を全子孫に継承 */
   box-sizing: border-box;
-  & *, & *::before, & *::after { box-sizing: inherit; }
-  & * { min-width: 0; }
+  & *,
+  & *::before,
+  & *::after {
+    box-sizing: inherit;
+  }
+  & * {
+    min-width: 0;
+  }
 
   width: min(100%, 1100px);
   margin: 0 auto;
   padding: clamp(10px, 4vw, 24px);
 
-  font-family: 'Inter','Noto Sans JP', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-family:
+    'Inter',
+    'Noto Sans JP',
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    sans-serif;
   /* スマホ字を一段小さく */
   font-size: clamp(14px, 1.45vw, 16px);
   line-height: 1.85;
@@ -445,7 +426,11 @@ const Container = styled.div`
   text-spacing: ideograph-alpha ideograph-numeric;
 
   /* すべての <img> を安全に縮小（inline style の width を上書き） */
-  img { max-width: 100% !important; height: auto !important; display: block; }
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+  }
 `;
 
 const Content = styled.div`
@@ -549,19 +534,23 @@ const CodeWrapper = styled.div`
   overflow: hidden; /* デフォは広げない */
 
   /* react-code-blocks の最上位div/pre/codeを締め付け */
-  & > *, pre, code, pre > code {
+  & > *,
+  pre,
+  code,
+  pre > code {
     box-sizing: border-box;
     width: 100% !important;
     max-width: 100% !important;
     overflow: hidden !important;
-    white-space: pre;         /* 折り返さず途中で見切れる */
+    white-space: pre; /* 折り返さず途中で見切れる */
     display: block;
   }
 
   /* デスクトップは横スクロールを復活 */
   @media (min-width: 721px) {
     overflow-x: auto;
-    & > *, pre {
+    & > *,
+    pre {
       width: max-content !important;
       max-width: none !important;
       overflow: visible !important;
@@ -570,7 +559,9 @@ const CodeWrapper = styled.div`
 
   /* モバイルは文字も少し小さく */
   @media (max-width: 720px) {
-    code { font-size: 0.85em; }
+    code {
+      font-size: 0.85em;
+    }
   }
 `;
 
@@ -585,7 +576,9 @@ const CopyButton = styled.button`
   background-color: #363636;
   color: #fff;
   font-size: 0.85rem;
-  &:hover { opacity: 0.8; }
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 /* === 表：小画面はテーブル自身の中だけ横スクロール === */

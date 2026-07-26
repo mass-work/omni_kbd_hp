@@ -107,11 +107,6 @@ const Home: React.FC = () => {
                 <li>サブトラックボール: 25mm</li>
                 <li>タッチディスプレイ: 有り</li>
                 <li>スイッチ: cherryMX</li>
-                <li>
-                  <a href="https://masskb.booth.pm/items/6487849" target="_blank" rel="noreferrer">
-                    shop
-                  </a>
-                </li>
               </ul>
               <p>
                 キー入力やマウスの操作性に重きを置いています。デスク上に据え置き、「あらゆるPC作業を効率的にこなす」をコンセプトに設計しています。

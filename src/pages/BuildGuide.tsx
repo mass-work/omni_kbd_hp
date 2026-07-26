@@ -371,6 +371,7 @@ const BuildGuide: React.FC = () => {
 
           {/* ==== 2. 部品の準備 ==== */}
           <CollapsibleSection title="部品の準備" id="部品の準備">
+            ※一部部品が仮組されている場合があります。分解してから組み立ててください。
             {/* 2-1. 左トラックボールケース */}
             <SectionContainer id="左トラックボールケース">
               <SectionHeading>左トラックボールケース</SectionHeading>
@@ -394,7 +395,6 @@ const BuildGuide: React.FC = () => {
                 </li>
               </OrderedList>
             </SectionContainer>
-
             {/* 2-2. 右トラックボールケース */}
             <SectionContainer id="右トラックボールケース">
               <SectionHeading>右トラックボールケース</SectionHeading>
@@ -416,7 +416,6 @@ const BuildGuide: React.FC = () => {
                 </li>
               </OrderedList>
             </SectionContainer>
-
             {/* 2-3. ボトムプレート(アクリルプレート) */}
             <SectionContainer id="ボトムプレート(アクリルプレート)">
               <SectionHeading>ボトムプレート(アクリルプレート)</SectionHeading>
@@ -569,8 +568,8 @@ const BuildGuide: React.FC = () => {
               <SectionHeading>基板と配線のはんだ付け</SectionHeading>
               <AlertGray>
                 <p>
-                  <strong>TIP:</strong> 配線はまとめてはんだ付け手順を記載していますが、やり難いばあは1本ずつ作業してください。 <br />
-                  配線の予備はんだは必ず必要なわけではないですが、撚り線がばらけてショートするリスクがあるので、予備はんだすることを推奨します。
+                  <strong>TIP:</strong> 配線はまとめてはんだ付け手順を記載していますが、やり難い場合は1本ずつ作業してください。 <br />
+                  配線の予備はんだは必ず必要なわけではないですが、撚り線がばらけてショートするリスクがあるので実施することを推奨します。
                 </p>
               </AlertGray>
               <OrderedList>
@@ -705,7 +704,7 @@ const BuildGuide: React.FC = () => {
                   >
                     こちら
                   </a>
-                  からomni_cs_00_00_00_vial.uf2のfirmwareをダウンロードします。(数値部分はバージョンによって異なります)
+                  からomni_cs_test.uf2のfirmwareをダウンロードします。
                 </li>
                 <li>Raspberry Pi Picoのbootボタンを押しながらUSBにさします。</li>
                 <li>
@@ -717,18 +716,20 @@ const BuildGuide: React.FC = () => {
               </OrderedList>
               <p style={{ fontWeight: 'bold', marginTop: '1rem' }}>確認項目</p>
               <UnorderedList>
-                <li>
-                  キースイッチが反応するか(各キーのピンをピンセットなどで触り導通させてください。)
-                  <br />
-                  ※PCBアセンブリ済みであっても確認してください。反応しない場合は、ソケット→ダイオード→マイコンの順ではんだ付けし直してください。
-                </li>
-                <a href="https://config.qmk.fm/#/test" target="_blank" rel="noopener noreferrer">
-                  ▶ QMK Configurator キーテスター
-                </a>
+                <li>キースイッチが反応するか(各キーのピンをピンセットなどで触り導通させてください。)</li>
                 <FlexCenter>
                   <img src={`${import.meta.env.BASE_URL}img/build_11_01.jpg`} alt="Build 11 01" style={{ width: '300px' }} />
                 </FlexCenter>
-
+                <a href="https://config.qmk.fm/#/test" target="_blank" rel="noopener noreferrer">
+                  ▶ QMK Configurator キーテスター
+                </a>
+                にアクセスしテスト用ファームウェアでキースイッチを全て押すと、下図のようになります。
+                反応しないキーがある場合は、再度はんだ付けを行ってください。
+                <br />
+                ※PCBアセンブリ済みであっても確認してください。反応しない場合は、ソケット→ダイオード→マイコンの順ではんだ付けをし直すことを推奨します。
+                <FlexCenter>
+                  <img src={`${import.meta.env.BASE_URL}img/build_11_02.jpg`} alt="Build 11 02" style={{ width: '300px' }} />
+                </FlexCenter>
                 <li>ディスプレイが表示されているか</li>
                 <li>スワイプや長押し(3秒以上)が反応するか</li>
                 <li>
@@ -737,6 +738,23 @@ const BuildGuide: React.FC = () => {
                     <img src={`${import.meta.env.BASE_URL}img/readme_layer.gif`} alt="Readme Layer" style={{ width: '300px' }} />
                   </FlexCenter>
                 </li>
+                <li>確認が完了したら、下図の赤丸部のリセットスイッチをダブルクリックし、正規のファームウェアを書き込みます。</li>
+                <FlexCenter>
+                  <img src={`${import.meta.env.BASE_URL}img/build_11_03.jpg`} alt="build 11 03" style={{ width: '300px' }} />
+                </FlexCenter>
+                <li>
+                  ファームウェアは
+                  <a
+                    href="https://github.com/mass-work/vial-qmk/tree/vial/keyboards/omni_kbd/build"
+                    style={{ color: '#a9a9a9', textDecoration: 'none' }}
+                  >
+                    こちら
+                  </a>
+                  からomni_cs_00_00_00_vial.uf2のfirmwareをダウンロードしドラッグアンドドロップします。(数値部分はバージョンによって異なります)
+                </li>
+                <FlexCenter>
+                  <img src={`${import.meta.env.BASE_URL}img/build_10_01.jpg`} alt="Build 10 01" style={{ width: '500px' }} />
+                </FlexCenter>
                 <li>動作に異常がある場合はトラブルシューティングを確認してください。解決しない場合はご連絡下さい。</li>
               </UnorderedList>
             </SectionContainer>
